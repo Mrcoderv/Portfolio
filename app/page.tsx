@@ -5,17 +5,21 @@ import { ProjectsSection } from "@/components/projects-section"
 import { BlogSection } from "@/components/blog-section"
 import { ContactSection } from "@/components/contact-section"
 import { Navigation } from "@/components/navigation"
+import StructuredData from "@/components/structured-data"
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background">
-      <Navigation />
-      <HeroSection />
-      <AboutSection />
-      <SkillsSection />
-      <ProjectsSection />
-      <BlogSection />
-      <ContactSection />
-    </main>
+    <>
+      <StructuredData />
+      <main className="min-h-screen bg-background">
+        <Navigation />
+        <HeroSection />
+        <AboutSection />
+        <SkillsSection />
+        <ProjectsSection />
+        <BlogSection />
+        <ContactSection />
+      </main>
+    </>
   )
 }

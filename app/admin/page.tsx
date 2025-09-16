@@ -19,7 +19,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Trash2, Edit, Plus, Eye } from "lucide-react"
+import { Trash2, Edit, Plus, Eye, FileText, Download } from "lucide-react"
 import { useRouter } from "next/navigation"
 
 interface Project {
@@ -63,6 +63,30 @@ interface BlogPost {
   source: "manual"
 }
 
+interface SocialLink {
+  id: string
+  platform: string
+  username: string
+  url: string
+  icon: string
+}
+
+interface ContactInfo {
+  id: string
+  type: "email" | "phone" | "location" | "website"
+  label: string
+  value: string
+  icon: string
+}
+
+interface CVInfo {
+  id: string
+  filename: string
+  uploadDate: string
+  fileSize?: string
+  description?: string
+}
+
 export default function AdminDashboard() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [password, setPassword] = useState("")
@@ -74,24 +98,65 @@ export default function AdminDashboard() {
   const [editingEducation, setEditingEducation] = useState<Education | null>(null)
   const [editingContact, setEditingContact] = useState<Contact | null>(null)
   const [editingBlogPost, setEditingBlogPost] = useState<BlogPost | null>(null)
-  const router = useRouter()
+  const [router, setEditingSocialLink, setEditingContactInfo] = [
+    useRouter(),
+    useState<SocialLink | null>(null),
+    useState<ContactInfo | null>(null),
+  ]
+  const [socialLinks, setSocialLinks] = useState<SocialLink[]>([])
+  const [contactInfo, setContactInfo] = useState<ContactInfo[]>([])
+  const [cvInfo, setCvInfo] = useState<CVInfo | null>(null)
+  const [uploadingCV, setUploadingCV] = useState(false)
+  const editingSocialLink = null
+  const editingContactInfo = null
 
   useEffect(() => {
     const savedProjects = localStorage.getItem("portfolio-projects")
     const savedEducation = localStorage.getItem("portfolio-education")
     const savedContacts = localStorage.getItem("portfolio-contacts")
     const savedBlogPosts = localStorage.getItem("portfolio-blog-posts")
+    const savedSocialLinks = localStorage.getItem("portfolio-social-links")
+    const savedContactInfo = localStorage.getItem("portfolio-contact-info")
 
     if (savedProjects) setProjects(JSON.parse(savedProjects))
     if (savedEducation) setEducation(JSON.parse(savedEducation))
     if (savedContacts) setContacts(JSON.parse(savedContacts))
     if (savedBlogPosts) setBlogPosts(JSON.parse(savedBlogPosts))
+    if (savedSocialLinks) setSocialLinks(JSON.parse(savedSocialLinks))
+    if (savedContactInfo) setContactInfo(JSON.parse(savedContactInfo))
 
     const authStatus = sessionStorage.getItem("admin-authenticated")
     if (authStatus === "true") {
       setIsAuthenticated(true)
     }
   }, [])
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      loadData()
+    }
+  }, [isAuthenticated])
+
+  const loadData = () => {
+    const savedProjects = localStorage.getItem("portfolio-projects")
+    const savedEducation = localStorage.getItem("portfolio-education")
+    const savedContacts = localStorage.getItem("portfolio-contacts")
+    const savedBlogPosts = localStorage.getItem("portfolio-blog-posts")
+    const savedSocialLinks = localStorage.getItem("portfolio-social-links")
+    const savedContactInfo = localStorage.getItem("portfolio-contact-info")
+
+    if (savedProjects) setProjects(JSON.parse(savedProjects))
+    if (savedEducation) setEducation(JSON.parse(savedEducation))
+    if (savedContacts) setContacts(JSON.parse(savedContacts))
+    if (savedBlogPosts) setBlogPosts(JSON.parse(savedBlogPosts))
+    if (savedSocialLinks) setSocialLinks(JSON.parse(savedSocialLinks))
+    if (savedContactInfo) setContactInfo(JSON.parse(savedContactInfo))
+
+    const savedCV = localStorage.getItem("portfolio-cv")
+    if (savedCV) {
+      setCvInfo(JSON.parse(savedCV))
+    }
+  }
 
   const handleLogin = () => {
     if (password === "admin123") {
@@ -126,6 +191,58 @@ export default function AdminDashboard() {
   const saveBlogPosts = (newBlogPosts: BlogPost[]) => {
     setBlogPosts(newBlogPosts)
     localStorage.setItem("portfolio-blog-posts", JSON.stringify(newBlogPosts))
+  }
+
+  const saveSocialLinks = (newSocialLinks: SocialLink[]) => {
+    setSocialLinks(newSocialLinks)
+    localStorage.setItem("portfolio-social-links", JSON.stringify(newSocialLinks))
+  }
+
+  const saveContactInfo = (newContactInfo: ContactInfo[]) => {
+    setContactInfo(newContactInfo)
+    localStorage.setItem("portfolio-contact-info", JSON.stringify(newContactInfo))
+  }
+
+  const handleCVUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    if (!file) return
+
+    if (file.type !== "application/pdf") {
+      alert("Please upload a PDF file")
+      return
+    }
+
+    setUploadingCV(true)
+
+    try {
+      // Create CV info object
+      const newCVInfo: CVInfo = {
+        id: Date.now().toString(),
+        filename: file.name,
+        uploadDate: new Date().toISOString(),
+        fileSize: `${(file.size / 1024 / 1024).toFixed(2)} MB`,
+        description: "Latest Resume/CV",
+      }
+
+      // Save to localStorage (in production, you'd upload to Vercel Blob or similar)
+      localStorage.setItem("portfolio-cv", JSON.stringify(newCVInfo))
+      setCvInfo(newCVInfo)
+
+      // Note: In production, you would upload the actual file to Vercel Blob here
+      console.log("[v0] CV uploaded successfully:", newCVInfo)
+    } catch (error) {
+      console.error("[v0] Error uploading CV:", error)
+      alert("Error uploading CV. Please try again.")
+    } finally {
+      setUploadingCV(false)
+    }
+  }
+
+  const handleDeleteCV = () => {
+    if (confirm("Are you sure you want to delete the current CV?")) {
+      localStorage.removeItem("portfolio-cv")
+      setCvInfo(null)
+    }
   }
 
   const handleProjectSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -223,6 +340,48 @@ export default function AdminDashboard() {
     setEditingBlogPost(null)
   }
 
+  const handleSocialLinkSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const formData = new FormData(e.currentTarget)
+
+    const socialLinkData: SocialLink = {
+      id: editingSocialLink?.id || Date.now().toString(),
+      platform: formData.get("platform") as string,
+      username: formData.get("username") as string,
+      url: formData.get("url") as string,
+      icon: formData.get("icon") as string,
+    }
+
+    if (editingSocialLink) {
+      saveSocialLinks(socialLinks.map((s) => (s.id === editingSocialLink.id ? socialLinkData : s)))
+    } else {
+      saveSocialLinks([...socialLinks, socialLinkData])
+    }
+
+    setEditingSocialLink(null)
+  }
+
+  const handleContactInfoSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const formData = new FormData(e.currentTarget)
+
+    const contactInfoData: ContactInfo = {
+      id: editingContactInfo?.id || Date.now().toString(),
+      type: formData.get("type") as ContactInfo["type"],
+      label: formData.get("label") as string,
+      value: formData.get("value") as string,
+      icon: formData.get("icon") as string,
+    }
+
+    if (editingContactInfo) {
+      saveContactInfo(contactInfo.map((c) => (c.id === editingContactInfo.id ? contactInfoData : c)))
+    } else {
+      saveContactInfo([...contactInfo, contactInfoData])
+    }
+
+    setEditingContactInfo(null)
+  }
+
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
@@ -270,12 +429,17 @@ export default function AdminDashboard() {
 
       <div className="container mx-auto px-4 py-8">
         <Tabs defaultValue="projects" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList className="grid w-full grid-cols-7">
             <TabsTrigger value="projects">Projects</TabsTrigger>
             <TabsTrigger value="education">Education</TabsTrigger>
             <TabsTrigger value="contacts">Contacts</TabsTrigger>
             <TabsTrigger value="blog">Blog Posts</TabsTrigger>
+            <TabsTrigger value="social">Social Links</TabsTrigger>
+            <TabsTrigger value="contact-info">Contact Info</TabsTrigger>
+            <TabsTrigger value="cv">CV/Resume</TabsTrigger>
           </TabsList>
+
+          {/* ... existing tabs ... */}
 
           <TabsContent value="projects" className="space-y-6">
             <div className="flex justify-between items-center">
@@ -1002,6 +1166,290 @@ export default function AdminDashboard() {
                 </Card>
               ))}
             </div>
+          </TabsContent>
+
+          <TabsContent value="social" className="space-y-6">
+            <div className="flex justify-between items-center">
+              <h2 className="text-2xl font-bold">Social Links</h2>
+              <Button onClick={() => setEditingSocialLink({} as SocialLink)}>
+                <Plus className="w-4 h-4 mr-2" />
+                Add Social Link
+              </Button>
+            </div>
+
+            {editingSocialLink && (
+              <Card>
+                <CardHeader>
+                  <CardTitle>{editingSocialLink.id ? "Edit Social Link" : "Add New Social Link"}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <form onSubmit={handleSocialLinkSubmit} className="space-y-4">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="platform">Platform</Label>
+                        <Input
+                          id="platform"
+                          name="platform"
+                          defaultValue={editingSocialLink.platform}
+                          placeholder="e.g., GitHub, LinkedIn, Twitter"
+                          required
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="username">Username</Label>
+                        <Input
+                          id="username"
+                          name="username"
+                          defaultValue={editingSocialLink.username}
+                          placeholder="Your username"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="url">URL</Label>
+                      <Input
+                        id="url"
+                        name="url"
+                        type="url"
+                        defaultValue={editingSocialLink.url}
+                        placeholder="https://..."
+                        required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="icon">Icon (Lucide icon name)</Label>
+                      <Input
+                        id="icon"
+                        name="icon"
+                        defaultValue={editingSocialLink.icon}
+                        placeholder="e.g., Github, Linkedin, Twitter"
+                        required
+                      />
+                    </div>
+                    <div className="flex gap-2">
+                      <Button type="submit">Save</Button>
+                      <Button type="button" variant="outline" onClick={() => setEditingSocialLink(null)}>
+                        Cancel
+                      </Button>
+                    </div>
+                  </form>
+                </CardContent>
+              </Card>
+            )}
+
+            <div className="grid gap-4">
+              {socialLinks.map((link) => (
+                <Card key={link.id}>
+                  <CardContent className="p-4">
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <h3 className="font-semibold">{link.platform}</h3>
+                        <p className="text-sm text-muted-foreground">@{link.username}</p>
+                        <p className="text-sm text-blue-600">{link.url}</p>
+                      </div>
+                      <div className="flex gap-2">
+                        <Button size="sm" variant="outline" onClick={() => setEditingSocialLink(link)}>
+                          <Edit className="w-4 h-4" />
+                        </Button>
+                        <Button
+                          size="sm"
+                          variant="destructive"
+                          onClick={() => saveSocialLinks(socialLinks.filter((s) => s.id !== link.id))}
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </Button>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </TabsContent>
+
+          <TabsContent value="contact-info" className="space-y-6">
+            <div className="flex justify-between items-center">
+              <h2 className="text-2xl font-bold">Contact Information</h2>
+              <Button onClick={() => setEditingContactInfo({} as ContactInfo)}>
+                <Plus className="w-4 h-4 mr-2" />
+                Add Contact Info
+              </Button>
+            </div>
+
+            {editingContactInfo && (
+              <Card>
+                <CardHeader>
+                  <CardTitle>{editingContactInfo.id ? "Edit Contact Info" : "Add New Contact Info"}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <form onSubmit={handleContactInfoSubmit} className="space-y-4">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="type">Type</Label>
+                        <select
+                          id="type"
+                          name="type"
+                          defaultValue={editingContactInfo.type}
+                          className="w-full p-2 border rounded-md"
+                          required
+                        >
+                          <option value="email">Email</option>
+                          <option value="phone">Phone</option>
+                          <option value="location">Location</option>
+                          <option value="website">Website</option>
+                        </select>
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="label">Label</Label>
+                        <Input
+                          id="label"
+                          name="label"
+                          defaultValue={editingContactInfo.label}
+                          placeholder="e.g., Email, WhatsApp, Location"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="value">Value</Label>
+                      <Input
+                        id="value"
+                        name="value"
+                        defaultValue={editingContactInfo.value}
+                        placeholder="Contact value"
+                        required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="icon">Icon (Lucide icon name)</Label>
+                      <Input
+                        id="icon"
+                        name="icon"
+                        defaultValue={editingContactInfo.icon}
+                        placeholder="e.g., Mail, Phone, MapPin"
+                        required
+                      />
+                    </div>
+                    <div className="flex gap-2">
+                      <Button type="submit">Save</Button>
+                      <Button type="button" variant="outline" onClick={() => setEditingContactInfo(null)}>
+                        Cancel
+                      </Button>
+                    </div>
+                  </form>
+                </CardContent>
+              </Card>
+            )}
+
+            <div className="grid gap-4">
+              {contactInfo.map((info) => (
+                <Card key={info.id}>
+                  <CardContent className="p-4">
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <h3 className="font-semibold">{info.label}</h3>
+                        <p className="text-sm text-muted-foreground">{info.type}</p>
+                        <p className="text-sm">{info.value}</p>
+                      </div>
+                      <div className="flex gap-2">
+                        <Button size="sm" variant="outline" onClick={() => setEditingContactInfo(info)}>
+                          <Edit className="w-4 h-4" />
+                        </Button>
+                        <Button
+                          size="sm"
+                          variant="destructive"
+                          onClick={() => saveContactInfo(contactInfo.filter((c) => c.id !== info.id))}
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </Button>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </TabsContent>
+
+          <TabsContent value="cv" className="space-y-6">
+            <div className="flex justify-between items-center">
+              <h2 className="text-xl font-semibold">Manage CV/Resume</h2>
+            </div>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Current CV/Resume</CardTitle>
+                <CardDescription>Upload and manage your CV/Resume file. Only PDF files are supported.</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {cvInfo ? (
+                  <div className="border rounded-lg p-4 space-y-3">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-3">
+                        <FileText className="h-8 w-8 text-primary" />
+                        <div>
+                          <p className="font-medium">{cvInfo.filename}</p>
+                          <p className="text-sm text-muted-foreground">
+                            Uploaded: {new Date(cvInfo.uploadDate).toLocaleDateString()}
+                          </p>
+                          {cvInfo.fileSize && <p className="text-sm text-muted-foreground">Size: {cvInfo.fileSize}</p>}
+                        </div>
+                      </div>
+                      <div className="flex space-x-2">
+                        <Button variant="outline" size="sm">
+                          <Download className="h-4 w-4 mr-2" />
+                          Download
+                        </Button>
+                        <Button variant="destructive" size="sm" onClick={handleDeleteCV}>
+                          <Trash2 className="h-4 w-4 mr-2" />
+                          Delete
+                        </Button>
+                      </div>
+                    </div>
+                    {cvInfo.description && <p className="text-sm text-muted-foreground">{cvInfo.description}</p>}
+                  </div>
+                ) : (
+                  <div className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-8 text-center">
+                    <FileText className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                    <p className="text-muted-foreground mb-4">No CV/Resume uploaded yet</p>
+                  </div>
+                )}
+
+                <div className="space-y-4">
+                  <div>
+                    <label htmlFor="cv-upload" className="block text-sm font-medium mb-2">
+                      Upload New CV/Resume
+                    </label>
+                    <div className="flex items-center space-x-4">
+                      <input
+                        id="cv-upload"
+                        type="file"
+                        accept=".pdf"
+                        onChange={handleCVUpload}
+                        disabled={uploadingCV}
+                        className="flex-1 text-sm text-muted-foreground file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-primary file:text-primary-foreground hover:file:bg-primary/90"
+                      />
+                      {uploadingCV && (
+                        <div className="flex items-center space-x-2">
+                          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-primary"></div>
+                          <span className="text-sm text-muted-foreground">Uploading...</span>
+                        </div>
+                      )}
+                    </div>
+                    <p className="text-xs text-muted-foreground mt-2">
+                      Only PDF files are supported. Maximum file size: 10MB
+                    </p>
+                  </div>
+
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    <h4 className="font-medium text-blue-900 mb-2">Production Setup Note:</h4>
+                    <p className="text-sm text-blue-800">
+                      For production deployment, integrate with Vercel Blob storage to handle actual file uploads.
+                      Currently, only metadata is stored locally for demonstration purposes.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </TabsContent>
         </Tabs>
       </div>

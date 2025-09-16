@@ -33,14 +33,13 @@ export function BlogSection() {
       const manualPosts = localStorage.getItem("portfolio-blog-posts")
       const parsedManualPosts: BlogPost[] = manualPosts ? JSON.parse(manualPosts) : []
 
-      // Simulate fetching from Byte Space Nepal (since we can't access their API directly)
       const byteSpacePosts: BlogPost[] = [
         {
           id: "bsn-1",
           title: "Clear your Doubts on Serialization and Deserialization in Spring Boot",
           excerpt:
             "Insights on how to develop a clear idea on serialization and deserialization concepts in Spring Boot applications.",
-          author: "Byte Space Nepal",
+          author: "Raghava Panthi",
           publishedAt: "2024-01-15",
           tags: ["Spring Boot", "Java", "Serialization"],
           url: "https://bytespacenepal.com/serialization-spring-boot",
@@ -52,7 +51,7 @@ export function BlogSection() {
           title: "Master your Lettuce Redis Integration",
           excerpt:
             "Learn how to integrate Redis with Spring Boot using Lettuce client for better performance and scalability.",
-          author: "Byte Space Nepal",
+          author: "Raghava Panthi",
           publishedAt: "2024-01-10",
           tags: ["Redis", "Spring Boot", "Database"],
           url: "https://bytespacenepal.com/lettuce-redis-integration",
@@ -64,7 +63,7 @@ export function BlogSection() {
           title: "Protect Your System From Cross-Site Scripting",
           excerpt:
             "Essential security practices to prevent XSS attacks and protect your web applications from malicious scripts.",
-          author: "Byte Space Nepal",
+          author: "Raghava Panthi",
           publishedAt: "2024-01-05",
           tags: ["Security", "XSS", "Web Development"],
           url: "https://bytespacenepal.com/prevent-xss-attacks",
@@ -73,8 +72,12 @@ export function BlogSection() {
         },
       ]
 
-      // Combine and sort posts by date
-      const allPosts = [...parsedManualPosts, ...byteSpacePosts].sort(
+      const filteredByteSpacePosts = byteSpacePosts.filter(
+        (post) => post.source === "bytespacenepal" && post.author === "Raghava Panthi",
+      )
+
+      // Combine manual posts with filtered Byte Space posts and sort by date
+      const allPosts = [...parsedManualPosts, ...filteredByteSpacePosts].sort(
         (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
       )
 
@@ -132,7 +135,7 @@ export function BlogSection() {
         <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Latest Blog Posts</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Insights and articles from Byte Space Nepal and personal thoughts on technology
+            Articles by Raghava Panthi from Byte Space Nepal and personal thoughts on technology
           </p>
         </div>
 
