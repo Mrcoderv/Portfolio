@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Download, Mail, Github, Linkedin } from "lucide-react"
+import { Download, Mail, Github, Linkedin, Laptop, Rocket } from "lucide-react"
 
 export function HeroSection() {
   const scrollToSection = (sectionId: string) => {
@@ -67,11 +67,11 @@ export function HeroSection() {
                 </div>
               </div>
               {/* Floating elements */}
-              <div className="absolute -top-4 -right-4 w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center animate-pulse">
-                <span className="text-2xl">💻</span>
+              <div className="absolute -top-4 -right-4 w-16 h-16 bg-primary/20 border-2 border-primary/30 rounded-full flex items-center justify-center animate-pulse">
+                <Laptop className="h-6 w-6 text-primary" />
               </div>
-              <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center animate-pulse delay-1000">
-                <span className="text-xl">🚀</span>
+              <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-secondary/20 border-2 border-secondary/30 rounded-full flex items-center justify-center animate-pulse delay-1000">
+                <Rocket className="h-5 w-5 text-secondary" />
               </div>
             </div>
           </div>

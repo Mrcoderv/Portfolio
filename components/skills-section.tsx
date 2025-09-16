@@ -84,14 +84,6 @@ export function SkillsSection() {
             </Card>
           ))}
         </div>
-
-        {/* GitHub Stats */}
-        <div className="mt-16 text-center">
-          <h3 className="text-2xl font-bold mb-8">GitHub Language Stats</h3>
-          <div className="bg-card rounded-lg p-6 max-w-2xl mx-auto">
-            <img src="/github-language-statistics-chart-showing-java--pyt.jpg" alt="GitHub Language Stats" className="w-full h-auto rounded" />
-          </div>
-        </div>
       </div>
     </section>
   )
