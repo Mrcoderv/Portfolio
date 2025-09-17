@@ -87,7 +87,8 @@ interface CVInfo {
   description?: string
 }
 
-export default function AdminDashboard() {
+export default function AdminPage() {
+  const router = useRouter()
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [password, setPassword] = useState("")
   const [projects, setProjects] = useState<Project[]>([])
@@ -98,33 +99,16 @@ export default function AdminDashboard() {
   const [editingEducation, setEditingEducation] = useState<Education | null>(null)
   const [editingContact, setEditingContact] = useState<Contact | null>(null)
   const [editingBlogPost, setEditingBlogPost] = useState<BlogPost | null>(null)
-  const [router, setEditingSocialLink, setEditingContactInfo] = [
-    useRouter(),
-    useState<SocialLink | null>(null),
-    useState<ContactInfo | null>(null),
-  ]
+  const [editingSocialLink, setEditingSocialLink] = useState<SocialLink | null>(null)
+  const [editingContactInfo, setEditingContactInfo] = useState<ContactInfo | null>(null)
   const [socialLinks, setSocialLinks] = useState<SocialLink[]>([])
   const [contactInfo, setContactInfo] = useState<ContactInfo[]>([])
   const [cvInfo, setCvInfo] = useState<CVInfo | null>(null)
   const [uploadingCV, setUploadingCV] = useState(false)
-  const editingSocialLink = null
-  const editingContactInfo = null
+  const [uploadingImage, setUploadingImage] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    const savedProjects = localStorage.getItem("portfolio-projects")
-    const savedEducation = localStorage.getItem("portfolio-education")
-    const savedContacts = localStorage.getItem("portfolio-contacts")
-    const savedBlogPosts = localStorage.getItem("portfolio-blog-posts")
-    const savedSocialLinks = localStorage.getItem("portfolio-social-links")
-    const savedContactInfo = localStorage.getItem("portfolio-contact-info")
-
-    if (savedProjects) setProjects(JSON.parse(savedProjects))
-    if (savedEducation) setEducation(JSON.parse(savedEducation))
-    if (savedContacts) setContacts(JSON.parse(savedContacts))
-    if (savedBlogPosts) setBlogPosts(JSON.parse(savedBlogPosts))
-    if (savedSocialLinks) setSocialLinks(JSON.parse(savedSocialLinks))
-    if (savedContactInfo) setContactInfo(JSON.parse(savedContactInfo))
-
     const authStatus = sessionStorage.getItem("admin-authenticated")
     if (authStatus === "true") {
       setIsAuthenticated(true)
@@ -132,31 +116,91 @@ export default function AdminDashboard() {
   }, [])
 
   useEffect(() => {
-    if (isAuthenticated) {
-      loadData()
+    const loadData = async () => {
+      try {
+        const response = await fetch("/api/portfolio-data")
+        if (response.ok) {
+          const data = await response.json()
+          setProjects(data.projects || [])
+          setEducation(data.education || [])
+          setContacts(data.contacts || [])
+          setBlogPosts(data.blogPosts || [])
+          setSocialLinks(data.socialLinks || [])
+          setContactInfo(data.contactInfo || [])
+          setCvInfo(data.cvInfo || null)
+          return
+        }
+      } catch (error) {
+        console.error("Failed to load data from server:", error)
+      }
+
+      const savedProjects = localStorage.getItem("portfolio-projects")
+      const savedEducation = localStorage.getItem("portfolio-education")
+      const savedContacts = localStorage.getItem("portfolio-contacts")
+      const savedBlogPosts = localStorage.getItem("portfolio-blog-posts")
+      const savedSocialLinks = localStorage.getItem("portfolio-social-links")
+      const savedContactInfo = localStorage.getItem("portfolio-contact-info")
+      const savedCV = localStorage.getItem("portfolio-cv")
+
+      if (savedProjects) setProjects(JSON.parse(savedProjects))
+      if (savedEducation) setEducation(JSON.parse(savedEducation))
+      if (savedContacts) setContacts(JSON.parse(savedContacts))
+      if (savedBlogPosts) setBlogPosts(JSON.parse(savedBlogPosts))
+
+      if (savedSocialLinks) {
+        setSocialLinks(JSON.parse(savedSocialLinks))
+      } else {
+        const defaultSocialLinks: SocialLink[] = [
+          {
+            id: "1",
+            platform: "Instagram",
+            username: "aagh2030",
+            url: "https://www.instagram.com/aagh2030",
+            icon: "Instagram",
+          },
+          {
+            id: "2",
+            platform: "LinkedIn",
+            username: "raghav-vian-panthi",
+            url: "https://www.linkedin.com/in/raghav-vian-panthi",
+            icon: "Linkedin",
+          },
+          {
+            id: "3",
+            platform: "Twitter",
+            username: "MrRaghavpanthi",
+            url: "https://twitter.com/MrRaghavpanthi",
+            icon: "Twitter",
+          },
+          {
+            id: "4",
+            platform: "LeetCode",
+            username: "mrcoderv",
+            url: "https://leetcode.com/mrcoderv",
+            icon: "Code",
+          },
+          {
+            id: "5",
+            platform: "GitHub",
+            username: "Mrcoderv",
+            url: "https://github.com/Mrcoderv",
+            icon: "Github",
+          },
+        ]
+        setSocialLinks(defaultSocialLinks)
+        localStorage.setItem("portfolio-social-links", JSON.stringify(defaultSocialLinks))
+        syncDataToServer()
+      }
+
+      if (savedContactInfo) {
+        const parsedContactInfo = JSON.parse(savedContactInfo)
+        setContactInfo(Array.isArray(parsedContactInfo) ? parsedContactInfo : [])
+      }
+      if (savedCV) setCvInfo(JSON.parse(savedCV))
     }
-  }, [isAuthenticated])
 
-  const loadData = () => {
-    const savedProjects = localStorage.getItem("portfolio-projects")
-    const savedEducation = localStorage.getItem("portfolio-education")
-    const savedContacts = localStorage.getItem("portfolio-contacts")
-    const savedBlogPosts = localStorage.getItem("portfolio-blog-posts")
-    const savedSocialLinks = localStorage.getItem("portfolio-social-links")
-    const savedContactInfo = localStorage.getItem("portfolio-contact-info")
-
-    if (savedProjects) setProjects(JSON.parse(savedProjects))
-    if (savedEducation) setEducation(JSON.parse(savedEducation))
-    if (savedContacts) setContacts(JSON.parse(savedContacts))
-    if (savedBlogPosts) setBlogPosts(JSON.parse(savedBlogPosts))
-    if (savedSocialLinks) setSocialLinks(JSON.parse(savedSocialLinks))
-    if (savedContactInfo) setContactInfo(JSON.parse(savedContactInfo))
-
-    const savedCV = localStorage.getItem("portfolio-cv")
-    if (savedCV) {
-      setCvInfo(JSON.parse(savedCV))
-    }
-  }
+    loadData()
+  }, [])
 
   const handleLogin = () => {
     if (password === "admin123") {
@@ -173,38 +217,44 @@ export default function AdminDashboard() {
     router.push("/")
   }
 
-  const saveProjects = (newProjects: Project[]) => {
+  const saveProjects = async (newProjects: Project[]) => {
     setProjects(newProjects)
     localStorage.setItem("portfolio-projects", JSON.stringify(newProjects))
+    await syncDataToServer()
   }
 
-  const saveEducation = (newEducation: Education[]) => {
+  const saveEducation = async (newEducation: Education[]) => {
     setEducation(newEducation)
     localStorage.setItem("portfolio-education", JSON.stringify(newEducation))
+    await syncDataToServer()
   }
 
-  const saveContacts = (newContacts: Contact[]) => {
+  const saveContacts = async (newContacts: Contact[]) => {
     setContacts(newContacts)
     localStorage.setItem("portfolio-contacts", JSON.stringify(newContacts))
+    await syncDataToServer()
   }
 
-  const saveBlogPosts = (newBlogPosts: BlogPost[]) => {
+  const saveBlogPosts = async (newBlogPosts: BlogPost[]) => {
     setBlogPosts(newBlogPosts)
     localStorage.setItem("portfolio-blog-posts", JSON.stringify(newBlogPosts))
+    await syncDataToServer()
   }
 
-  const saveSocialLinks = (newSocialLinks: SocialLink[]) => {
+  const saveSocialLinks = async (newSocialLinks: SocialLink[]) => {
     setSocialLinks(newSocialLinks)
     localStorage.setItem("portfolio-social-links", JSON.stringify(newSocialLinks))
+    await syncDataToServer()
   }
 
-  const saveContactInfo = (newContactInfo: ContactInfo[]) => {
+  const saveContactInfo = async (newContactInfo: ContactInfo[]) => {
     setContactInfo(newContactInfo)
     localStorage.setItem("portfolio-contact-info", JSON.stringify(newContactInfo))
+    await syncDataToServer()
   }
 
-  const handleCVUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0]
+  const handleCVUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
     if (!file) return
 
     if (file.type !== "application/pdf") {
@@ -213,28 +263,82 @@ export default function AdminDashboard() {
     }
 
     setUploadingCV(true)
-
     try {
-      // Create CV info object
-      const newCVInfo: CVInfo = {
-        id: Date.now().toString(),
-        filename: file.name,
-        uploadDate: new Date().toISOString(),
-        fileSize: `${(file.size / 1024 / 1024).toFixed(2)} MB`,
-        description: "Latest Resume/CV",
+      const formData = new FormData()
+      formData.append("file", file)
+
+      const response = await fetch("/api/upload-cv", {
+        method: "POST",
+        body: formData,
+      })
+
+      if (response.ok) {
+        const result = await response.json()
+        const newCvInfo = {
+          url: result.url,
+          filename: result.filename,
+        }
+        setCvInfo(newCvInfo)
+        localStorage.setItem("portfolio-cv", JSON.stringify(newCvInfo))
+        await syncDataToServer()
+        alert("CV uploaded successfully!")
+      } else {
+        throw new Error("Upload failed")
+      }
+    } catch (error) {
+      console.error("CV upload error:", error)
+      alert("Failed to upload CV. Please try again.")
+    }
+    setUploadingCV(false)
+  }
+
+  const handleImageUpload = async (file: File): Promise<string> => {
+    setUploadingImage(true)
+    try {
+      const formData = new FormData()
+      formData.append("file", file)
+
+      const response = await fetch("/api/upload-image", {
+        method: "POST",
+        body: formData,
+      })
+
+      if (response.ok) {
+        const result = await response.json()
+        return result.url
+      } else {
+        throw new Error("Image upload failed")
+      }
+    } catch (error) {
+      console.error("Image upload error:", error)
+      throw error
+    } finally {
+      setUploadingImage(false)
+    }
+  }
+
+  const syncDataToServer = async () => {
+    try {
+      const data = {
+        projects,
+        education,
+        contacts,
+        blogPosts,
+        socialLinks,
+        contactInfo: contactInfo[0] || {},
+        cvUrl: cvInfo?.url || null,
+        cvFilename: cvInfo?.filename || null,
       }
 
-      // Save to localStorage (in production, you'd upload to Vercel Blob or similar)
-      localStorage.setItem("portfolio-cv", JSON.stringify(newCVInfo))
-      setCvInfo(newCVInfo)
-
-      // Note: In production, you would upload the actual file to Vercel Blob here
-      console.log("[v0] CV uploaded successfully:", newCVInfo)
+      await fetch("/api/portfolio-data", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
     } catch (error) {
-      console.error("[v0] Error uploading CV:", error)
-      alert("Error uploading CV. Please try again.")
-    } finally {
-      setUploadingCV(false)
+      console.error("Data sync error:", error)
     }
   }
 
@@ -245,27 +349,38 @@ export default function AdminDashboard() {
     }
   }
 
-  const handleProjectSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleProjectSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
-    const technologies = (formData.get("technologies") as string).split(",").map((t) => t.trim())
+    const imageFile = (e.currentTarget.querySelector('input[name="projectImage"]') as HTMLInputElement)?.files?.[0]
+
+    let imageUrl = editingProject?.imageUrl || ""
+
+    if (imageFile) {
+      try {
+        imageUrl = await handleImageUpload(imageFile)
+      } catch (error) {
+        alert("Failed to upload image. Please try again.")
+        return
+      }
+    }
 
     const projectData: Project = {
       id: editingProject?.id || Date.now().toString(),
       title: formData.get("title") as string,
       description: formData.get("description") as string,
-      technologies,
-      githubUrl: (formData.get("githubUrl") as string) || undefined,
-      liveUrl: (formData.get("liveUrl") as string) || undefined,
-      imageUrl: (formData.get("imageUrl") as string) || undefined,
+      technologies: (formData.get("technologies") as string).split(",").map((t) => t.trim()),
+      githubUrl: formData.get("githubUrl") as string,
+      liveUrl: formData.get("liveUrl") as string,
+      imageUrl: imageUrl,
     }
 
-    if (editingProject) {
-      saveProjects(projects.map((p) => (p.id === editingProject.id ? projectData : p)))
-    } else {
-      saveProjects([...projects, projectData])
-    }
+    const newProjects = editingProject
+      ? projects.map((p) => (p.id === editingProject.id ? projectData : p))
+      : [...projects, projectData]
 
+    saveProjects(newProjects)
+    await syncDataToServer()
     setEditingProject(null)
   }
 
@@ -495,6 +610,23 @@ export default function AdminDashboard() {
                     <div className="space-y-2">
                       <Label htmlFor="imageUrl">Image URL</Label>
                       <Input id="imageUrl" name="imageUrl" type="url" defaultValue={editingProject?.imageUrl} />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="projectImage">Or Upload Image</Label>
+                      <input
+                        id="projectImage"
+                        name="projectImage"
+                        type="file"
+                        accept="image/*"
+                        disabled={uploadingImage}
+                        className="w-full text-sm text-muted-foreground file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-primary file:text-primary-foreground hover:file:bg-primary/90"
+                      />
+                      {uploadingImage && (
+                        <div className="flex items-center space-x-2">
+                          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-primary"></div>
+                          <span className="text-sm text-muted-foreground">Uploading image...</span>
+                        </div>
+                      )}
                     </div>
                     <Button type="submit" className="w-full">
                       {editingProject ? "Update Project" : "Add Project"}

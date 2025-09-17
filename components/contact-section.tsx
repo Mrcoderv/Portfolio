@@ -37,6 +37,7 @@ interface CVInfo {
   id: string
   filename: string
   uploadDate: string
+  url?: string
   fileSize?: string
   description?: string
 }
@@ -64,16 +65,53 @@ export function ContactSection() {
   const [socialLinks, setSocialLinks] = useState<SocialLink[]>([])
   const [contactInfo, setContactInfo] = useState<ContactInfo[]>([])
   const [cvInfo, setCvInfo] = useState<CVInfo | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    const savedSocialLinks = localStorage.getItem("portfolio-social-links")
-    const savedContactInfo = localStorage.getItem("portfolio-contact-info")
-    const savedCV = localStorage.getItem("portfolio-cv")
-
-    if (savedSocialLinks) setSocialLinks(JSON.parse(savedSocialLinks))
-    if (savedContactInfo) setContactInfo(JSON.parse(savedContactInfo))
-    if (savedCV) setCvInfo(JSON.parse(savedCV))
+    loadData()
   }, [])
+
+  const loadData = async () => {
+    setIsLoading(true)
+    try {
+      const response = await fetch("/api/portfolio-data")
+      if (response.ok) {
+        const data = await response.json()
+        setSocialLinks(data.socialLinks || [])
+        setContactInfo(data.contactInfo ? [data.contactInfo] : [])
+        setCvInfo(
+          data.cvUrl
+            ? {
+                url: data.cvUrl,
+                filename: data.cvFilename || "Resume.pdf",
+                uploadDate: new Date().toISOString(),
+                id: "cv-1",
+              }
+            : null,
+        )
+      } else {
+        // Fallback to localStorage if API fails
+        const savedSocialLinks = localStorage.getItem("portfolio-social-links")
+        const savedContactInfo = localStorage.getItem("portfolio-contact-info")
+        const savedCV = localStorage.getItem("portfolio-cv")
+
+        if (savedSocialLinks) setSocialLinks(JSON.parse(savedSocialLinks))
+        if (savedContactInfo) setContactInfo(JSON.parse(savedContactInfo))
+        if (savedCV) setCvInfo(JSON.parse(savedCV))
+      }
+    } catch (error) {
+      console.error("Error loading data:", error)
+      // Fallback to localStorage
+      const savedSocialLinks = localStorage.getItem("portfolio-social-links")
+      const savedContactInfo = localStorage.getItem("portfolio-contact-info")
+      const savedCV = localStorage.getItem("portfolio-cv")
+
+      if (savedSocialLinks) setSocialLinks(JSON.parse(savedSocialLinks))
+      if (savedContactInfo) setContactInfo(JSON.parse(savedContactInfo))
+      if (savedCV) setCvInfo(JSON.parse(savedCV))
+    }
+    setIsLoading(false)
+  }
 
   const displayContactInfo =
     contactInfo.length > 0
@@ -97,14 +135,39 @@ export function ContactSection() {
     }))
   }
 
-  const handleDownloadCV = () => {
-    // In production, this would download the actual file from Vercel Blob
-    // For now, we'll show an alert with instructions
-    if (cvInfo) {
-      alert(`CV download would start here. File: ${cvInfo.filename}`)
+  const handleDownloadCV = async () => {
+    if (cvInfo?.url) {
+      try {
+        // Create a temporary link to download the file
+        const link = document.createElement("a")
+        link.href = cvInfo.url
+        link.download = cvInfo.filename
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+      } catch (error) {
+        console.error("Download failed:", error)
+        alert("Failed to download CV. Please try again or contact me directly.")
+      }
+    } else if (cvInfo) {
+      // Fallback for when URL is not available
+      alert(`CV download would start here. File: ${cvInfo.filename}. Please contact me directly for my resume.`)
     } else {
       alert("No CV available for download. Please contact me directly for my resume.")
     }
+  }
+
+  if (isLoading) {
+    return (
+      <section id="contact" className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
+            <p className="text-muted-foreground mt-4">Loading contact information...</p>
+          </div>
+        </div>
+      </section>
+    )
   }
 
   return (
@@ -169,9 +232,12 @@ export function ContactSection() {
                   </div>
                 </div>
               ) : (
-                <p className="text-sm text-muted-foreground">
-                  CV will be available for download soon. Please contact me directly for my resume.
-                </p>
+                <div className="text-center py-4">
+                  <p className="text-sm text-muted-foreground mb-2">No CV uploaded yet</p>
+                  <p className="text-xs text-muted-foreground">
+                    Upload your CV through the admin dashboard to enable downloads
+                  </p>
+                </div>
               )}
             </div>
 
