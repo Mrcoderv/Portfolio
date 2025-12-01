@@ -99,125 +99,125 @@ export function BlogSection() {
 
   if (loading) {
     return (
-      <section id="blog" className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Latest Blog Posts</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Insights and articles from Byte Space Nepal and personal thoughts on technology
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
-              <Card key={i} className="animate-pulse">
-                <div className="h-48 bg-muted rounded-t-lg"></div>
-                <CardHeader>
-                  <div className="h-4 bg-muted rounded w-3/4 mb-2"></div>
-                  <div className="h-3 bg-muted rounded w-1/2"></div>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2">
-                    <div className="h-3 bg-muted rounded"></div>
-                    <div className="h-3 bg-muted rounded w-5/6"></div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-    )
-  }
+  //     <section id="blog" className="py-20 bg-muted/30">
+  //       <div className="container mx-auto px-4">
+  //         <div className="text-center mb-16">
+  //           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Latest Blog Posts</h2>
+  //           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+  //             Insights and articles from Byte Space Nepal and personal thoughts on technology
+  //           </p>
+  //         </div>
+  //         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+  //           {[1, 2, 3].map((i) => (
+  //             <Card key={i} className="animate-pulse">
+  //               <div className="h-48 bg-muted rounded-t-lg"></div>
+  //               <CardHeader>
+  //                 <div className="h-4 bg-muted rounded w-3/4 mb-2"></div>
+  //                 <div className="h-3 bg-muted rounded w-1/2"></div>
+  //               </CardHeader>
+  //               <CardContent>
+  //                 <div className="space-y-2">
+  //                   <div className="h-3 bg-muted rounded"></div>
+  //                   <div className="h-3 bg-muted rounded w-5/6"></div>
+  //                 </div>
+  //               </CardContent>
+  //             </Card>
+  //           ))}
+  //         </div>
+  //       </div>
+  //     </section>
+  //   )
+  // }
 
-  return (
-    <section id="blog" className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in-up">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Latest Blog Posts</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Articles by Raghava Panthi from Byte Space Nepal and personal thoughts on technology
-          </p>
-        </div>
+  // return (
+  //   <section id="blog" className="py-20 bg-muted/30">
+  //     <div className="container mx-auto px-4">
+  //       <div className="text-center mb-16 animate-fade-in-up">
+  //         <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Latest Blog Posts</h2>
+  //         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+  //           Articles by Raghava Panthi from Byte Space Nepal and personal thoughts on technology
+  //         </p>
+  //       </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {posts.slice(0, 6).map((post, index) => (
-            <Card
-              key={post.id}
-              className="group hover:shadow-lg transition-all duration-300 animate-fade-in-up overflow-hidden"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              {post.imageUrl && (
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={post.imageUrl || "/placeholder.svg"}
-                    alt={post.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  {post.source === "bytespacenepal" && (
-                    <Badge className="absolute top-2 right-2 bg-secondary">Byte Space Nepal</Badge>
-                  )}
-                </div>
-              )}
+  //       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+  //         {posts.slice(0, 6).map((post, index) => (
+  //           <Card
+  //             key={post.id}
+  //             className="group hover:shadow-lg transition-all duration-300 animate-fade-in-up overflow-hidden"
+  //             style={{ animationDelay: `${index * 0.1}s` }}
+  //           >
+  //             {post.imageUrl && (
+  //               <div className="relative h-48 overflow-hidden">
+  //                 <img
+  //                   src={post.imageUrl || "/placeholder.svg"}
+  //                   alt={post.title}
+  //                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+  //                 />
+  //                 {post.source === "bytespacenepal" && (
+  //                   <Badge className="absolute top-2 right-2 bg-secondary">Byte Space Nepal</Badge>
+  //                 )}
+  //               </div>
+  //             )}
 
-              <CardHeader>
-                <CardTitle className="text-lg group-hover:text-primary transition-colors line-clamp-2">
-                  {post.title}
-                </CardTitle>
-                <CardDescription className="line-clamp-3">{post.excerpt}</CardDescription>
-              </CardHeader>
+  //             <CardHeader>
+  //               <CardTitle className="text-lg group-hover:text-primary transition-colors line-clamp-2">
+  //                 {post.title}
+  //               </CardTitle>
+  //               <CardDescription className="line-clamp-3">{post.excerpt}</CardDescription>
+  //             </CardHeader>
 
-              <CardContent className="space-y-4">
-                <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                  <div className="flex items-center gap-1">
-                    <User className="w-4 h-4" />
-                    {post.author}
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Calendar className="w-4 h-4" />
-                    {formatDate(post.publishedAt)}
-                  </div>
-                </div>
+  //             <CardContent className="space-y-4">
+  //               <div className="flex items-center gap-4 text-sm text-muted-foreground">
+  //                 <div className="flex items-center gap-1">
+  //                   <User className="w-4 h-4" />
+  //                   {post.author}
+  //                 </div>
+  //                 <div className="flex items-center gap-1">
+  //                   <Calendar className="w-4 h-4" />
+  //                   {formatDate(post.publishedAt)}
+  //                 </div>
+  //               </div>
 
-                <div className="flex flex-wrap gap-2">
-                  {post.tags.slice(0, 3).map((tag) => (
-                    <Badge key={tag} variant="outline" className="text-xs">
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
+  //               <div className="flex flex-wrap gap-2">
+  //                 {post.tags.slice(0, 3).map((tag) => (
+  //                   <Badge key={tag} variant="outline" className="text-xs">
+  //                     {tag}
+  //                   </Badge>
+  //                 ))}
+  //               </div>
 
-                {post.url && (
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors bg-transparent"
-                    asChild
-                  >
-                    <a href={post.url} target="_blank" rel="noopener noreferrer">
-                      Read More
-                      <ExternalLink className="w-4 h-4 ml-2" />
-                    </a>
-                  </Button>
-                )}
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+  //               {post.url && (
+  //                 <Button
+  //                   variant="outline"
+  //                   size="sm"
+  //                   className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors bg-transparent"
+  //                   asChild
+  //                 >
+  //                   <a href={post.url} target="_blank" rel="noopener noreferrer">
+  //                     Read More
+  //                     <ExternalLink className="w-4 h-4 ml-2" />
+  //                   </a>
+  //                 </Button>
+  //               )}
+  //             </CardContent>
+  //           </Card>
+  //         ))}
+  //       </div>
 
-        {posts.length > 6 && (
-          <div className="text-center mt-12">
-            <Button variant="outline" size="lg">
-              View All Posts
-            </Button>
-          </div>
-        )}
+  //       {posts.length > 6 && (
+  //         <div className="text-center mt-12">
+  //           <Button variant="outline" size="lg">
+  //             View All Posts
+  //           </Button>
+  //         </div>
+  //       )}
 
-        {posts.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-muted-foreground">No blog posts available at the moment.</p>
-          </div>
-        )}
-      </div>
-    </section>
+  //       {posts.length === 0 && (
+  //         <div className="text-center py-12">
+  //           <p className="text-muted-foreground">No blog posts available at the moment.</p>
+  //         </div>
+  //       )}
+  //     </div>
+  //   </section>
   )
 }
