@@ -32,13 +32,39 @@ export function AboutSection() {
       id: "default-1",
       type: "email",
       label: "Email",
-      value: "raghavs.33@gmail.com",
+      value: "Raghavap.339@gmail.com",
     },
     {
       id: "default-2",
       type: "phone",
+      label: "Phone",
+      value: "+977 9866421276",
+    },
+    {
+      id: "default-3",
+      type: "phone",
       label: "WhatsApp",
-      value: "+977 9866563776",
+      value: "+977 9866412176",
+    },
+    {
+      id: "default-4",
+      type: "website",
+      label: "LinkedIn",
+      value: "linkedin.com/in/raghav-vian-panthi",
+      url: "https://linkedin.com/in/raghav-vian-panthi",
+    },
+  ]
+
+  // Default education as fallback
+  const defaultEducation: Education[] = [
+    {
+      id: "edu-1",
+      institution: "Pokhara University",
+      degree: "Bachelor of Computer Applications (BCA)",
+      field: "Computer Science",
+      startYear: "2023",
+      endYear: "2027",
+      description: "Currently in 5th Semester",
     },
   ]
 
@@ -58,7 +84,14 @@ export function AboutSection() {
     }
 
     if (savedEducation) {
-      setEducation(JSON.parse(savedEducation))
+      const parsedEducation = JSON.parse(savedEducation)
+      if (parsedEducation.length > 0) {
+        setEducation(parsedEducation)
+      } else {
+        setEducation(defaultEducation)
+      }
+    } else {
+      setEducation(defaultEducation)
     }
   }, [])
 
@@ -113,39 +146,37 @@ export function AboutSection() {
                 Who am I?
               </h3>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                I am a highly motivated and result-driven Bachelor of Computer Applications (BCA) student with a strong
-                foundation in computer science and programming. I am proficient in Java, C, HTML, CSS, JavaScript, and
-                Python, with a passion for software development, AI, and data analysis.
+                Highly motivated and result-driven Bachelor of Computer Applications (BCA) student with a strong
+                foundation in computer science and programming. Proficient in Python, Java, C, HTML, CSS, JavaScript,
+                and .NET, with a growing focus on Machine Learning, Artificial Intelligence, and Data Analysis.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                Experienced in developing both command line and web-based applications, and eager to apply my technical
-                skills to real-world projects. I thrive in collaborative environments and am always looking to learn new
-                technologies and methodologies.
+                Experienced in both command-line and web-based application development, passionate about using AI and
+                data to tackle real-world challenges. Collaborating with international teams on machine learning
+                projects at Omdena, contributing to climate analytics and data normalization solutions.
               </p>
             </div>
 
             {/* Education Section */}
-            {education.length > 0 && (
-              <div>
-                <h3 className="text-xl font-bold mb-4">Education</h3>
-                <div className="space-y-3">
-                  {education.map((edu) => (
-                    <Card key={edu.id} className="hover:shadow-md transition-shadow">
-                      <CardContent className="p-4">
-                        <h4 className="font-semibold">
-                          {edu.degree} in {edu.field}
-                        </h4>
-                        <p className="text-sm text-muted-foreground">{edu.institution}</p>
-                        <p className="text-sm text-muted-foreground">
-                          {edu.startYear} - {edu.endYear}
-                        </p>
-                        {edu.description && <p className="text-sm text-muted-foreground mt-2">{edu.description}</p>}
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
+            <div>
+              <h3 className="text-xl font-bold mb-4">Education</h3>
+              <div className="space-y-3">
+                {education.map((edu) => (
+                  <Card key={edu.id} className="hover:shadow-md transition-shadow">
+                    <CardContent className="p-4">
+                      <h4 className="font-semibold">
+                        {edu.degree} in {edu.field}
+                      </h4>
+                      <p className="text-sm text-muted-foreground">{edu.institution}</p>
+                      <p className="text-sm text-muted-foreground">
+                        {edu.startYear} - {edu.endYear}
+                      </p>
+                      {edu.description && <p className="text-sm text-muted-foreground mt-2">{edu.description}</p>}
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
-            )}
+            </div>
 
             {/* Contact Info Cards */}
             <div>

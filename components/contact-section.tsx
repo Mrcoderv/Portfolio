@@ -117,9 +117,11 @@ export function ContactSection() {
     contactInfo.length > 0
       ? contactInfo
       : [
-          { id: "1", type: "email" as const, label: "Email", value: "raghavs.33@gmail.com", icon: "Mail" },
-          { id: "2", type: "phone" as const, label: "WhatsApp", value: "+977 9866563776", icon: "Phone" },
-          { id: "3", type: "location" as const, label: "Location", value: "Nepal", icon: "MapPin" },
+          { id: "1", type: "email" as const, label: "Email", value: "Raghavap.339@gmail.com", icon: "Mail" },
+          { id: "2", type: "phone" as const, label: "Phone", value: "+977 9866421276", icon: "Phone" },
+          { id: "3", type: "phone" as const, label: "WhatsApp", value: "+977 9866412176", icon: "Phone" },
+          { id: "4", type: "website" as const, label: "Portfolio", value: "raghavpanthi.com.np", icon: "Globe" },
+          { id: "5", type: "website" as const, label: "LinkedIn", value: "linkedin.com/in/raghav-vian-panthi", icon: "Linkedin" },
         ]
 
   const handleSubmit = (e: React.FormEvent) => {

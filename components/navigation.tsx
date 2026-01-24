@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Settings } from "lucide-react"
-import Link from "next/link"
+import { Menu, X } from "lucide-react"
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -67,14 +66,15 @@ export function Navigation() {
             >
               Blog
             </button>
+            <button
+              onClick={() => scrollToSection("certificates")}
+              className="text-foreground hover:text-primary transition-colors"
+            >
+              Certificates
+            </button>
             <Button onClick={() => scrollToSection("contact")} className="bg-primary hover:bg-primary/90">
               Contact
             </Button>
-            <Link href="/admin">
-              <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
-                <Settings className="h-4 w-4" />
-              </Button>
-            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -122,6 +122,12 @@ export function Navigation() {
               >
                 Blog
               </button>
+              <button
+                onClick={() => scrollToSection("certificates")}
+                className="text-left text-foreground hover:text-primary transition-colors"
+              >
+                Certificates
+              </button>
               <Button onClick={() => scrollToSection("contact")} className="bg-primary hover:bg-primary/90 w-fit">
                 Contact
               </Button>
@@ -130,11 +136,5 @@ export function Navigation() {
                   <Settings className="h-4 w-4" />
                   Admin
                 </Button>
-              </Link>
-            </div>
-          </div>
-        )}
-      </div>
-    </nav>
-  )
+            
 }

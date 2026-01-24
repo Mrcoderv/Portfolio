@@ -5,13 +5,23 @@ import { Code, Database, Globe, BarChart3 } from "lucide-react"
 export function SkillsSection() {
   const skillCategories = [
     {
-      title: "Programming Languages",
+      title: "Languages",
       icon: Code,
       skills: [
-        { name: "Java", level: 85 },
         { name: "Python", level: 80 },
-        { name: "JavaScript", level: 75 },
-        { name: "C", level: 70 },
+        { name: "Java", level: 85 },
+        { name: "C", level: 75 },
+        { name: ".NET", level: 70 },
+      ],
+    },
+    {
+      title: "ML / Data Science",
+      icon: BarChart3,
+      skills: [
+        { name: "Pandas", level: 75 },
+        { name: "NumPy", level: 75 },
+        { name: "Matplotlib", level: 70 },
+        { name: "Scikit-learn", level: 70 },
       ],
     },
     {
@@ -20,28 +30,18 @@ export function SkillsSection() {
       skills: [
         { name: "HTML5", level: 90 },
         { name: "CSS3", level: 85 },
-        { name: "React", level: 75 },
-        { name: "WordPress", level: 70 },
+        { name: "JavaScript", level: 80 },
+        { name: "WordPress", level: 75 },
       ],
     },
     {
-      title: "Data Analysis & Tools",
-      icon: BarChart3,
-      skills: [
-        { name: "Pandas", level: 75 },
-        { name: "NumPy", level: 70 },
-        { name: "Matplotlib", level: 65 },
-        { name: "Git & GitHub", level: 80 },
-      ],
-    },
-    {
-      title: "Databases",
+      title: "Database & Tools",
       icon: Database,
       skills: [
-        { name: "MySQL", level: 75 },
-        { name: "SQLite", level: 70 },
-        { name: "MongoDB", level: 60 },
-        { name: "PostgreSQL", level: 65 },
+        { name: "SQL", level: 75 },
+        { name: "Git/GitHub", level: 85 },
+        { name: "VS Code", level: 90 },
+        { name: "Streamlit", level: 70 },
       ],
     },
   ]

@@ -99,8 +99,9 @@ export function HeroSection() {
 
             <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
               Highly motivated and result-driven Bachelor of Computer Applications (BCA) student with a strong
-              foundation in computer science and programming. Passionate about software development, AI, and data
-              analysis.
+              foundation in computer science and programming. Proficient in Python, Java, C, HTML, CSS, JavaScript,
+              and .NET, with a growing focus on Machine Learning, Artificial Intelligence, and Data Analysis. Passionate
+              about using AI and data to tackle real-world challenges.
             </p>
 
             <div className="flex flex-wrap gap-4">
