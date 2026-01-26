@@ -1,8 +1,9 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Settings } from "lucide-react"
 import { ThemeToggle } from "./theme-toggle"
 
 export function Navigation() {
@@ -140,5 +141,11 @@ export function Navigation() {
                   <Settings className="h-4 w-4" />
                   Admin
                 </Button>
-            
+              </Link>
+            </div>
+          </div>
+        )}
+      </div>
+    </nav>
+  )
 }
