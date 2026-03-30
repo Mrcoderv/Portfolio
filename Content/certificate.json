@@ -1,1 +1,30 @@
-{}
+[
+  {
+    "id": "cert-1",
+    "title": "AI Innovation Challenge – ULog",
+    "organization": "Omdena",
+    "issueDate": "Dec 2025",
+    "certificateUrl": "https://confirm.omdena.com/INlvelj"
+  },
+  {
+    "id": "cert-2",
+    "title": "Innovation Challenge Bhutan — Building ClimateSense: Leveraging AI to Combat Climate Change in Bhutan",
+    "organization": "Omdena",
+    "issueDate": "Nov 2025",
+    "certificateUrl": "https://www.linkedin.com/in/raghav-vian-panthi/overlay/1763464094496/single-media-viewer/?profileId=ACoAAEnduuABDcDhS1G36g45-yBxlTgfhCrGqa0"
+  },
+  {
+    "id": "cert-3",
+    "title": "Omdena's Foundational Data Science Course",
+    "organization": "Omdena",
+    "issueDate": "Nov 2025",
+    "certificateUrl": "https://confirm.omdena.com/ACqp3es"
+  },
+  {
+    "id": "cert-4",
+    "title": "Responsive Web Design",
+    "organization": "freeCodeCamp",
+    "issueDate": "Oct 2024",
+    "certificateUrl": "https://www.freecodecamp.org/certification/fcc7f127ddc-2767-40c0-b9fb-7bad2aa68e64/responsive-web-design"
+  }
+]
