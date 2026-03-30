@@ -64,8 +64,8 @@ export async function GET() {
         website: "raghavpanthi.com.np",
       },
       projects: [],
-      cvUrl: null,
-      cvFilename: null,
+      cvUrl: "/cv/raghav_panthi_cv.pdf",
+      cvFilename: "raghav_panthi_cv.pdf",
     }
 
     return NextResponse.json(defaultData)

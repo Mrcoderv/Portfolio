@@ -54,16 +54,7 @@ export function HeroSection() {
     }
   }
 
-  const handleDownloadCV = () => {
-    if (cvUrl) {
-      const link = document.createElement("a")
-      link.href = cvUrl
-      link.download = "Raghav_Vian_Panthi_CV.pdf"
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
-    }
-  }
+  const CV_FALLBACK = "/cv/raghav_panthi_cv.pdf"
 
   const getSocialIcon = (platform: string) => {
     switch (platform.toLowerCase()) {
@@ -109,9 +100,11 @@ export function HeroSection() {
                 <Mail className="mr-2 h-4 w-4" />
                 Contact Me
               </Button>
-              <Button variant="outline" onClick={handleDownloadCV} disabled={!cvUrl}>
-                <Download className="mr-2 h-4 w-4" />
-                Download CV
+              <Button variant="outline" asChild>
+                <a href={cvUrl || CV_FALLBACK} download="Raghav_Vian_Panthi_CV.pdf">
+                  <Download className="mr-2 h-4 w-4" />
+                  Download CV
+                </a>
               </Button>
             </div>
 
