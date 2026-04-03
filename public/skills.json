@@ -11,17 +11,17 @@
         },
         {
           "name": "Java",
-          "level": 85,
+          "level": 65,
           "description": "OOP, Spring Boot, JavaFX"
         },
         {
           "name": "C",
-          "level": 75,
+          "level": 85,
           "description": "Systems programming, algorithms"
         },
         {
           "name": ".NET",
-          "level": 70,
+          "level": 60,
           "description": "Web development, backend"
         },
         {
@@ -31,7 +31,7 @@
         },
         {
           "name": "TypeScript",
-          "level": 75,
+          "level": 55,
           "description": "Type-safe development"
         }
       ]
@@ -62,12 +62,12 @@
         },
         {
           "name": "Streamlit",
-          "level": 70,
+          "level": 60,
           "description": "Web app development for ML"
         },
         {
           "name": "Data Analysis",
-          "level": 75,
+          "level": 59,
           "description": "Statistical analysis and insights"
         }
       ]
@@ -78,12 +78,12 @@
       "skills": [
         {
           "name": "React",
-          "level": 85,
+          "level": 45,
           "description": "Component-based UI development"
         },
         {
           "name": "Next.js",
-          "level": 80,
+          "level": 40,
           "description": "Full-stack React framework"
         },
         {
@@ -98,12 +98,12 @@
         },
         {
           "name": "Tailwind CSS",
-          "level": 85,
+          "level": 75,
           "description": "Utility-first CSS framework"
         },
         {
           "name": "WordPress",
-          "level": 75,
+          "level": 65,
           "description": "CMS and theme customization"
         }
       ]
@@ -114,7 +114,7 @@
       "skills": [
         {
           "name": "Spring Boot",
-          "level": 85,
+          "level": 45,
           "description": "Java backend framework, microservices"
         },
         {
@@ -134,7 +134,7 @@
         },
         {
           "name": "Express.js",
-          "level": 80,
+          "level": 30,
           "description": "Node.js web framework"
         },
         {
@@ -150,7 +150,7 @@
       "skills": [
         {
           "name": "PostgreSQL",
-          "level": 80,
+          "level": 70,
           "description": "Advanced relational database"
         },
         {
@@ -175,7 +175,7 @@
         },
         {
           "name": "Cloud Platforms",
-          "level": 70,
+          "level": 60,
           "description": "AWS, Heroku, Vercel deployment"
         }
       ]
