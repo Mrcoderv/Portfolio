@@ -11,6 +11,7 @@ import {
   Globe,
   Instagram,
   Facebook,
+  Youtube,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -49,6 +50,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Twitter,
   Instagram,
   Facebook,
+  Youtube,
 }
 
 export function ContactSection() {
