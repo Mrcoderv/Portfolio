@@ -1,0 +1,10 @@
+[{
+    "name": "John Doe",
+    "progress": 100
+}, {
+    "name": "Jane Smith",
+    "progress": 80
+}, {
+    "name": "Alice Johnson",
+    "progress": 90
+}]
