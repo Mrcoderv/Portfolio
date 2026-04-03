@@ -22,7 +22,7 @@ export function CertificatesSection() {
   useEffect(() => {
     const loadCertificates = async () => {
       try {
-        const response = await fetch("/Content/certificate.json")
+        const response = await fetch("/certificate.json")
         const data: Certificate[] = await response.json()
         setCertificates(data)
       } catch (error) {

@@ -28,7 +28,7 @@ export function ProjectsSection() {
   useEffect(() => {
     const loadProjects = async () => {
       try {
-        const response = await fetch("/Content/projects.json")
+        const response = await fetch("/projects.json")
         const data: Project[] = await response.json()
         setProjects(data)
       } catch (error) {
