@@ -37,7 +37,7 @@ export function SkillsSection() {
   useEffect(() => {
     const loadSkills = async () => {
       try {
-        const response = await fetch("/skills.json")
+        const response = await fetch("/content/skills.json")
         const data: SkillsData = await response.json()
         setSkillCategories(data.skillCategories)
       } catch (error) {

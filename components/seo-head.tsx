@@ -11,7 +11,7 @@ export default function SEOHead({
   title = "Raghav Vian Panthi - Full Stack Developer",
   description = "Computer Applications student and full-stack developer from Nepal specializing in modern web development.",
   canonical = "https://raghavpanthi.com.np",
-  ogImage = "/professional-headshot-of-a-young-developer-with-gl.jpg",
+  ogImage = "/media/professional-headshot-of-a-young-developer-with-gl.jpg",
 }: SEOHeadProps) {
   return (
     <Head>

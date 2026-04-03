@@ -140,7 +140,7 @@ export function HeroSection() {
               <div className="w-80 h-80 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 p-2 animate-float shadow-2xl hover:shadow-primary/30 transition-shadow">
                 <div className="w-full h-full rounded-full overflow-hidden bg-card border-2 border-primary/10">
                   <img
-                    src="/professional-headshot-of-a-young-developer-with-gl.jpg"
+                    src="/media/professional-headshot-of-a-young-developer-with-gl.jpg"
                     alt="Raghav Vian Panthi"
                     className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
                   />

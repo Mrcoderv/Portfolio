@@ -25,7 +25,7 @@ export function EducationSection() {
   useEffect(() => {
     const loadEducation = async () => {
       try {
-        const response = await fetch("/education.json")
+        const response = await fetch("/content/education.json")
         const data: Education[] = await response.json()
         setEducation(data)
       } catch (error) {
