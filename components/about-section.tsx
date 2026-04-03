@@ -64,7 +64,7 @@ export function AboutSection() {
       field: "Computer Science",
       startYear: "2023",
       endYear: "2027",
-      description: "Currently in 5th Semester",
+      description: "Currently in 6th Semester",
     },
   ]
 
