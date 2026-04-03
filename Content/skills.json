@@ -1,0 +1,148 @@
+{
+  "skillCategories": [
+    {
+      "title": "Languages",
+      "icon": "Code",
+      "skills": [
+        {
+          "name": "Python",
+          "level": 80,
+          "description": "Data processing, ML, scripting"
+        },
+        {
+          "name": "Java",
+          "level": 85,
+          "description": "OOP, Spring Boot, JavaFX"
+        },
+        {
+          "name": "C",
+          "level": 75,
+          "description": "Systems programming, algorithms"
+        },
+        {
+          "name": ".NET",
+          "level": 70,
+          "description": "Web development, backend"
+        },
+        {
+          "name": "JavaScript",
+          "level": 80,
+          "description": "Frontend, React, Node.js"
+        },
+        {
+          "name": "TypeScript",
+          "level": 75,
+          "description": "Type-safe development"
+        }
+      ]
+    },
+    {
+      "title": "ML / Data Science",
+      "icon": "BarChart3",
+      "skills": [
+        {
+          "name": "Pandas",
+          "level": 75,
+          "description": "Data manipulation and analysis"
+        },
+        {
+          "name": "NumPy",
+          "level": 75,
+          "description": "Numerical computing"
+        },
+        {
+          "name": "Matplotlib",
+          "level": 70,
+          "description": "Data visualization"
+        },
+        {
+          "name": "Scikit-learn",
+          "level": 70,
+          "description": "Machine learning algorithms"
+        },
+        {
+          "name": "Streamlit",
+          "level": 70,
+          "description": "Web app development for ML"
+        },
+        {
+          "name": "Data Analysis",
+          "level": 75,
+          "description": "Statistical analysis and insights"
+        }
+      ]
+    },
+    {
+      "title": "Web Development",
+      "icon": "Globe",
+      "skills": [
+        {
+          "name": "React",
+          "level": 85,
+          "description": "Component-based UI development"
+        },
+        {
+          "name": "Next.js",
+          "level": 80,
+          "description": "Full-stack React framework"
+        },
+        {
+          "name": "HTML5",
+          "level": 90,
+          "description": "Semantic markup"
+        },
+        {
+          "name": "CSS3",
+          "level": 85,
+          "description": "Styling and animations"
+        },
+        {
+          "name": "Tailwind CSS",
+          "level": 85,
+          "description": "Utility-first CSS framework"
+        },
+        {
+          "name": "WordPress",
+          "level": 75,
+          "description": "CMS and theme customization"
+        }
+      ]
+    },
+    {
+      "title": "Database & Tools",
+      "icon": "Database",
+      "skills": [
+        {
+          "name": "SQL",
+          "level": 75,
+          "description": "MySQL, PostgreSQL queries"
+        },
+        {
+          "name": "MongoDB",
+          "level": 70,
+          "description": "NoSQL database"
+        },
+        {
+          "name": "Git/GitHub",
+          "level": 85,
+          "description": "Version control and collaboration"
+        },
+        {
+          "name": "VS Code",
+          "level": 90,
+          "description": "Primary development environment"
+        },
+        {
+          "name": "Docker",
+          "level": 65,
+          "description": "Containerization"
+        },
+        {
+          "name": "Cloud Platforms",
+          "level": 70,
+          "description": "AWS, Heroku, Vercel deployment"
+        }
+      ]
+    }
+  ]
+}

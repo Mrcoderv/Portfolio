@@ -1,1 +1,24 @@
-
+[
+  {
+    "id": "edu-1",
+    "school": "Tribhuvan University",
+    "degree": "Bachelor of Computer Applications (BCA)",
+    "field": "Computer Science",
+    "startYear": 2022,
+    "endYear": 2025,
+    "status": "pursuing",
+    "gpa": "3.8",
+    "description": "Pursuing a comprehensive degree in Computer Applications with strong focus on programming, algorithms, and software development. Active in college projects and technical competitions."
+  },
+  {
+    "id": "edu-2",
+    "school": "SOS Herman Gmeiner School",
+    "degree": "High School Diploma",
+    "field": "Science Stream",
+    "startYear": 2018,
+    "endYear": 2020,
+    "status": "completed",
+    "gpa": "3.9",
+    "description": "Completed high school with distinction in Science stream with strong foundation in Mathematics, Physics, and Chemistry."
+  }
+]
