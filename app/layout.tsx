@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     siteName: "Raghav Panthi Portfolio",
     images: [
       {
-        url: "/professional-headshot-of-a-young-developer-with-gl.jpg",
+        url: "/media/professional-headshot-of-a-young-developer-with-gl.jpg",
         width: 1200,
         height: 630,
         alt: "Raghav Vian Panthi - Full Stack Developer",
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
     title: "Raghav Vian Panthi - Full Stack Developer",
     description:
       "Computer Applications student and full-stack developer from Nepal specializing in modern web development.",
-    images: ["/professional-headshot-of-a-young-developer-with-gl.jpg"],
+    images: ["/media/professional-headshot-of-a-young-developer-with-gl.jpg"],
   },
   robots: {
     index: true,

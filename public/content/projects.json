@@ -4,7 +4,7 @@
     "title": "Climate Analytics Platform (Omdena)",
     "description": "Built an end-to-end climate analytics platform to predict and visualize climate impacts across Nepal with interactive dashboards and actionable insights.",
     "category": "Data Science",
-    "imageUrl": "/climate-data-visualization-dashboard-with-charts-a.jpg",
+    "imageUrl": "/media/climate-data-visualization-dashboard-with-charts-a.jpg",
     "technologies": [
       "Python",
       "Streamlit",
@@ -26,7 +26,7 @@
     "title": "ULOG: Log Normalization Pipeline (Omdena)",
     "description": "Contributing to development of a robust log normalization and classification system with data preprocessing and feature extraction.",
     "category": "ML/AI",
-    "imageUrl": "/data-processing-pipeline-illustration.jpg",
+    "imageUrl": "/media/github-language-statistics-chart-showing-java--pyt.jpg",
     "technologies": [
       "Python",
       "Data Processing",
@@ -48,7 +48,7 @@
     "title": "JavaFX Ball Shot Game",
     "description": "Designed and developed a 2D Ball Shooting Game using JavaFX with physics-based mechanics and intuitive user interaction.",
     "category": "Game Development",
-    "imageUrl": "/java-gui-guessing-game-with-buttons-and-text-field.jpg",
+    "imageUrl": "/media/java-gui-guessing-game-with-buttons-and-text-field.jpg",
     "technologies": [
       "Java",
       "JavaFX",
@@ -69,7 +69,7 @@
     "title": "Hamro Yatra - Tourist Management System",
     "description": "Developed a comprehensive tourism and travel management system for Nepal with booking, authentication, and package management features.",
     "category": "Web Development",
-    "imageUrl": "/tourist-management-system-dashboard-with-booking-i.jpg",
+    "imageUrl": "/media/tourist-management-system-dashboard-with-booking-i.jpg",
     "technologies": [
       "Spring Boot",
       "Next.js",
@@ -92,7 +92,7 @@
     "title": "Portfolio Website",
     "description": "A responsive personal portfolio website showcasing projects, skills, and professional experience with modern design and smooth animations.",
     "category": "Web Development",
-    "imageUrl": "/modern-portfolio-website-with-clean-design-and-pro.jpg",
+    "imageUrl": "/media/modern-portfolio-website-with-clean-design-and-pro.jpg",
     "technologies": [
       "React",
       "Next.js",
@@ -115,7 +115,7 @@
     "title": "ClimateSense AI for Climate Change",
     "description": "Collaborated on climate analytics and prediction modeling for Bhutan with data preprocessing, feature engineering, and performance evaluation.",
     "category": "Data Science",
-    "imageUrl": "/climate-data-visualization-dashboard-with-charts-a.jpg",
+    "imageUrl": "/media/climate-data-visualization-dashboard-with-charts-a.jpg",
     "technologies": [
       "Python",
       "Machine Learning",
