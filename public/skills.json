@@ -138,9 +138,9 @@
           "description": "Node.js web framework"
         },
         {
-          "name": "Django",
-          "level": 70,
-          "description": "Full-featured Python web framework"
+          "name": "LINQ",
+          "level": 75,
+          "description": ".NET language integrated queries"
         }
       ]
     },
@@ -149,14 +149,14 @@
       "icon": "Database",
       "skills": [
         {
-          "name": "SQL",
-          "level": 75,
-          "description": "MySQL, PostgreSQL queries"
+          "name": "PostgreSQL",
+          "level": 80,
+          "description": "Advanced relational database"
         },
         {
-          "name": "MongoDB",
-          "level": 70,
-          "description": "NoSQL database"
+          "name": "SQL",
+          "level": 75,
+          "description": "Database queries and optimization"
         },
         {
           "name": "Git/GitHub",

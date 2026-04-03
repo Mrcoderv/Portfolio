@@ -149,7 +149,7 @@ export function ContactSection() {
       ? contactInfo
       : [
           { id: "1", type: "email" as const, label: "Email", value: "Raghavap.339@gmail.com", icon: "Mail" },
-        ]
+        ];
 
   return (
     <section id="contact" className="py-20 bg-muted/30">
