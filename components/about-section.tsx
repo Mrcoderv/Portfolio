@@ -126,20 +126,20 @@ export function AboutSection() {
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Profile Image */}
-          <div className="flex justify-center">
+          <div className="flex justify-center animate-slide-in-left">
             <div className="relative">
-              <div className="w-64 h-64 rounded-full overflow-hidden border-4 border-primary/20">
+              <div className="w-64 h-64 rounded-full overflow-hidden border-4 border-primary/20 shadow-lg hover:shadow-xl transition-shadow">
                 <img
                   src="/professional-photo-of-raghav-panthi--computer-scie.jpg"
                   alt="Raghav Vian Panthi"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
               </div>
             </div>
           </div>
 
           {/* About Content */}
-          <div className="space-y-6">
+          <div className="space-y-6 animate-slide-in-right">
             <div>
               <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
                 <User className="h-6 w-6 text-primary" />

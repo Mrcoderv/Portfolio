@@ -11,6 +11,7 @@ import {
   Globe,
   Instagram,
   Facebook,
+  Youtube,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -49,6 +50,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Twitter,
   Instagram,
   Facebook,
+  Youtube,
 }
 
 export function ContactSection() {
@@ -144,131 +146,144 @@ export function ContactSection() {
     }
   }
 
-  const displayContactInfo =
+  const displayContactInfo: ContactInfo[] =
     contactInfo.length > 0
       ? contactInfo
       : [
-          { id: "1", type: "email", label: "Email", value: "Raghavap.339@gmail.com", icon: "Mail" },
-        ]
+          { id: "1", type: "email" as const, label: "Email", value: "Raghavap.339@gmail.com", icon: "Mail" },
+        ];
 
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div className="bg-card border rounded-2xl p-8">
-        <h3 className="text-2xl font-bold mb-4">Contact Information</h3>
+    <section id="contact" className="py-20 bg-muted/30">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
+            Get in <span className="text-primary">Touch</span>
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            I&apos;d love to hear from you. Let&apos;s connect and discuss opportunities, ideas, or just have a chat.
+          </p>
+        </div>
 
-        {displayContactInfo.map((info) => {
-          const Icon = iconMap[info.icon] || Mail
-          return (
-            <div key={info.id} className="flex items-center gap-4 mb-4">
-              <Icon className="h-6 w-6 text-primary" />
-              <div>
-                <p className="text-sm font-medium">{info.label}</p>
-                <p className="text-sm text-muted-foreground">{info.value}</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="bg-card border rounded-2xl p-8 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
+            <h3 className="text-2xl font-bold mb-4">Contact Information</h3>
+
+            {displayContactInfo.map((info) => {
+              const Icon = iconMap[info.icon] || Mail
+              return (
+                <div key={info.id} className="flex items-center gap-4 mb-4">
+                  <Icon className="h-6 w-6 text-primary" />
+                  <div>
+                    <p className="text-sm font-medium">{info.label}</p>
+                    <p className="text-sm text-muted-foreground">{info.value}</p>
+                  </div>
+                </div>
+              )
+            })}
+
+            {socialLinks.length > 0 && (
+              <div className="pt-6 border-t">
+                <h4 className="text-lg font-semibold mb-4">Follow Me</h4>
+                <div className="flex gap-4 flex-wrap">
+                  {socialLinks.map((link) => {
+                    const IconComponent = iconMap[link.icon] || Globe
+                    return (
+                      <a
+                        key={link.id}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-4 py-2 bg-primary/10 hover:bg-primary/20 rounded-lg transition-colors"
+                      >
+                        <IconComponent className="h-5 w-5 text-primary" />
+                        <span className="text-sm font-medium">{link.platform}</span>
+                      </a>
+                    )
+                  })}
+                </div>
               </div>
-            </div>
-          )
-        })}
-
-        {socialLinks.length > 0 && (
-          <div className="pt-6 border-t">
-            <h4 className="text-lg font-semibold mb-4">Follow Me</h4>
-            <div className="flex gap-4 flex-wrap">
-              {socialLinks.map((link) => {
-                const IconComponent = iconMap[link.icon] || Globe
-                return (
-                  <a
-                    key={link.id}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 bg-primary/10 hover:bg-primary/20 rounded-lg transition-colors"
-                  >
-                    <IconComponent className="h-5 w-5 text-primary" />
-                    <span className="text-sm font-medium">{link.platform}</span>
-                  </a>
-                )
-              })}
-            </div>
-          </div>
-        )}
-      </div>
-
-      <div className="bg-card border rounded-2xl p-8">
-        <h3 className="text-2xl font-bold mb-6">Send Message</h3>
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="space-y-2">
-              <label htmlFor="name" className="text-sm font-medium">
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
-                placeholder="Your name"
-                required
-              />
-            </div>
-            <div className="space-y-2">
-              <label htmlFor="email" className="text-sm font-medium">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
-                placeholder="your.email@example.com"
-                required
-              />
-            </div>
+            )}
           </div>
 
-          <div className="space-y-2">
-            <label htmlFor="subject" className="text-sm font-medium">
-              Subject
-            </label>
-            <input
-              type="text"
-              id="subject"
-              name="subject"
-              value={formData.subject}
-              onChange={handleChange}
-              className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
-              placeholder="What's this about?"
-              required
-            />
-          </div>
+          <div className="bg-card border rounded-2xl p-8 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+            <h3 className="text-2xl font-bold mb-6">Send Message</h3>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label htmlFor="name" className="text-sm font-medium">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                    placeholder="Your name"
+                    required
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label htmlFor="email" className="text-sm font-medium">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                    placeholder="your.email@example.com"
+                    required
+                  />
+                </div>
+              </div>
 
-          <div className="space-y-2">
-            <label htmlFor="message" className="text-sm font-medium">
-              Message
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              rows={6}
-              className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
-              placeholder="Write your message..."
-              required
-            />
-          </div>
+              <div className="space-y-2">
+                <label htmlFor="subject" className="text-sm font-medium">
+                  Subject
+                </label>
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                  placeholder="What's this about?"
+                  required
+                />
+              </div>
 
-          <div className="flex items-center gap-4">
-            <Button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? "Sending..." : "Send Message"}
-            </Button>
-            {submitSuccess === true && <span className="text-success">Sent!</span>}
-            {submitSuccess === false && <span className="text-destructive">Failed to send</span>}
+              <div className="space-y-2">
+                <label htmlFor="message" className="text-sm font-medium">
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows={6}
+                  className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                  placeholder="Write your message..."
+                  required
+                />
+              </div>
+
+              <div className="flex items-center gap-4">
+                <Button type="submit" disabled={isSubmitting}>
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                </Button>
+                {submitSuccess === true && <span className="text-success">Sent!</span>}
+                {submitSuccess === false && <span className="text-destructive">Failed to send</span>}
+              </div>
+            </form>
           </div>
-        </form>
+        </div>
       </div>
     </section>
   )

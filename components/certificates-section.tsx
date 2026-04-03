@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -15,36 +16,35 @@ interface Certificate {
 }
 
 export function CertificatesSection() {
-  const certificates: Certificate[] = [
-    {
-      id: "cert-1",
-      title: "AI Innovation Challenge – ULog",
-      organization: "Omdena",
-      issueDate: "Dec 2025",
-      certificateUrl: "https://confirm.omdena.com/INlvelj",
-    },
-    {
-      id: "cert-2",
-      title: "Innovation Challenge Bhutan — Building ClimateSense: Leveraging AI to Combat Climate Change in Bhutan",
-      organization: "Omdena",
-      issueDate: "Nov 2025",
-      certificateUrl: "https://www.linkedin.com/in/raghav-vian-panthi/overlay/1763464094496/single-media-viewer/?profileId=ACoAAEnduuABDcDhS1G36g45-yBxlTgfhCrGqa0",
-    },
-    {
-      id: "cert-3",
-      title: "Omdena's Foundational Data Science Course",
-      organization: "Omdena",
-      issueDate: "Nov 2025",
-      certificateUrl: "https://confirm.omdena.com/ACqp3es",
-    },
-    {
-      id: "cert-4",
-      title: "Responsive Web Design",
-      organization: "freeCodeCamp",
-      issueDate: "Oct 2024",
-      certificateUrl: "https://www.freecodecamp.org/certification/fcc7f127ddc-2767-40c0-b9fb-7bad2aa68e64/responsive-web-design",
-    },
-  ]
+  const [certificates, setCertificates] = useState<Certificate[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const loadCertificates = async () => {
+      try {
+        const response = await fetch("/certificate.json")
+        const data: Certificate[] = await response.json()
+        setCertificates(data)
+      } catch (error) {
+        console.error("Failed to load certificates:", error)
+        setCertificates([])
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    loadCertificates()
+  }, [])
+
+  if (loading) {
+    return (
+      <section id="certificates" className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <p className="text-center text-muted-foreground">Loading certifications...</p>
+        </div>
+      </section>
+    )
+  }
 
   return (
     <section id="certificates" className="py-20 bg-muted/30">
@@ -59,8 +59,12 @@ export function CertificatesSection() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {certificates.map((cert) => (
-            <Card key={cert.id} className="hover:shadow-lg transition-shadow duration-300 flex flex-col">
+          {certificates.map((cert, index) => (
+            <Card
+              key={cert.id}
+              className="hover:shadow-lg transition-all duration-300 flex flex-col animate-fade-in-up"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
               <CardHeader className="pb-3">
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex-1">

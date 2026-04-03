@@ -1,0 +1,136 @@
+[
+  {
+    "id": "project-1",
+    "title": "Climate Analytics Platform (Omdena)",
+    "description": "Built an end-to-end climate analytics platform to predict and visualize climate impacts across Nepal with interactive dashboards and actionable insights.",
+    "category": "Data Science",
+    "imageUrl": "/climate-data-visualization-dashboard-with-charts-a.jpg",
+    "technologies": [
+      "Python",
+      "Streamlit",
+      "Pandas",
+      "Visualization"
+    ],
+    "githubUrl": "https://github.com/Mrcoderv",
+    "liveUrl": "#",
+    "startDate": "2025-09",
+    "endDate": "2025-11",
+    "highlights": [
+      "Interactive dashboard with real-time data visualization",
+      "Climate impact predictions for multiple regions",
+      "Data preprocessing and analysis pipeline"
+    ]
+  },
+  {
+    "id": "project-2",
+    "title": "ULOG: Log Normalization Pipeline (Omdena)",
+    "description": "Contributing to development of a robust log normalization and classification system with data preprocessing and feature extraction.",
+    "category": "ML/AI",
+    "imageUrl": "/data-processing-pipeline-illustration.jpg",
+    "technologies": [
+      "Python",
+      "Data Processing",
+      "ML",
+      "Git"
+    ],
+    "githubUrl": "https://github.com/Mrcoderv",
+    "liveUrl": "#",
+    "startDate": "2025-12",
+    "endDate": "Present",
+    "highlights": [
+      "Log pattern recognition and classification",
+      "Automated data preprocessing pipeline",
+      "Feature engineering and extraction"
+    ]
+  },
+  {
+    "id": "project-3",
+    "title": "JavaFX Ball Shot Game",
+    "description": "Designed and developed a 2D Ball Shooting Game using JavaFX with physics-based mechanics and intuitive user interaction.",
+    "category": "Game Development",
+    "imageUrl": "/java-gui-guessing-game-with-buttons-and-text-field.jpg",
+    "technologies": [
+      "Java",
+      "JavaFX",
+      "Physics Engine"
+    ],
+    "githubUrl": "https://github.com/Mrcoderv/JavaFXExample",
+    "liveUrl": "#",
+    "startDate": "2024-06",
+    "endDate": "2024-08",
+    "highlights": [
+      "Real-time physics simulation",
+      "Interactive GUI with JavaFX",
+      "Score tracking and game mechanics"
+    ]
+  },
+  {
+    "id": "project-4",
+    "title": "Hamro Yatra - Tourist Management System",
+    "description": "Developed a comprehensive tourism and travel management system for Nepal with booking, authentication, and package management features.",
+    "category": "Web Development",
+    "imageUrl": "/tourist-management-system-dashboard-with-booking-i.jpg",
+    "technologies": [
+      "Spring Boot",
+      "Next.js",
+      "React",
+      "MySQL"
+    ],
+    "githubUrl": "https://github.com/Mrcoderv/HamroYatra",
+    "liveUrl": "#",
+    "startDate": "2024-02",
+    "endDate": "2024-05",
+    "highlights": [
+      "User authentication and authorization",
+      "Package booking system",
+      "Admin dashboard for management",
+      "Payment integration"
+    ]
+  },
+  {
+    "id": "project-5",
+    "title": "Portfolio Website",
+    "description": "A responsive personal portfolio website showcasing projects, skills, and professional experience with modern design and smooth animations.",
+    "category": "Web Development",
+    "imageUrl": "/modern-portfolio-website-with-clean-design-and-pro.jpg",
+    "technologies": [
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "TypeScript"
+    ],
+    "githubUrl": "https://github.com/Mrcoderv",
+    "liveUrl": "https://raghavpanthi.com.np",
+    "startDate": "2024-08",
+    "endDate": "Present",
+    "highlights": [
+      "Responsive design for all devices",
+      "SEO optimized",
+      "Dynamic content from JSON",
+      "Smooth animations and transitions"
+    ]
+  },
+  {
+    "id": "project-6",
+    "title": "ClimateSense AI for Climate Change",
+    "description": "Collaborated on climate analytics and prediction modeling for Bhutan with data preprocessing, feature engineering, and performance evaluation.",
+    "category": "Data Science",
+    "imageUrl": "/climate-data-visualization-dashboard-with-charts-a.jpg",
+    "technologies": [
+      "Python",
+      "Machine Learning",
+      "Data Analysis",
+      "Collaboration"
+    ],
+    "githubUrl": "https://github.com/Mrcoderv",
+    "liveUrl": "#",
+    "startDate": "2025-10",
+    "endDate": "2025-12",
+    "highlights": [
+      "Climate impact prediction models",
+      "Data preprocessing and analysis",
+      "Feature engineering for ML models",
+      "Model evaluation and optimization"
+    ]
+  }
+]

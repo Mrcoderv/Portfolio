@@ -1,50 +1,75 @@
+"use client"
+
+import { useEffect, useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
+import { Button } from "@/components/ui/button"
 import { Code, Database, Globe, BarChart3 } from "lucide-react"
 
+interface Skill {
+  name: string
+  level: number
+  description?: string
+}
+
+interface SkillCategory {
+  title: string
+  icon: string
+  skills: Skill[]
+}
+
+interface SkillsData {
+  skillCategories: SkillCategory[]
+}
+
+const iconMap: Record<string, React.ReactNode> = {
+  Code: <Code className="h-5 w-5 text-primary" />,
+  BarChart3: <BarChart3 className="h-5 w-5 text-primary" />,
+  Globe: <Globe className="h-5 w-5 text-primary" />,
+  Database: <Database className="h-5 w-5 text-primary" />,
+}
+
 export function SkillsSection() {
-  const skillCategories = [
-    {
-      title: "Languages",
-      icon: Code,
-      skills: [
-        { name: "Python", level: 80 },
-        { name: "Java", level: 85 },
-        { name: "C", level: 75 },
-        { name: ".NET", level: 70 },
-      ],
-    },
-    {
-      title: "ML / Data Science",
-      icon: BarChart3,
-      skills: [
-        { name: "Pandas", level: 75 },
-        { name: "NumPy", level: 75 },
-        { name: "Matplotlib", level: 70 },
-        { name: "Scikit-learn", level: 70 },
-      ],
-    },
-    {
-      title: "Web Development",
-      icon: Globe,
-      skills: [
-        { name: "HTML5", level: 90 },
-        { name: "CSS3", level: 85 },
-        { name: "JavaScript", level: 80 },
-        { name: "WordPress", level: 75 },
-      ],
-    },
-    {
-      title: "Database & Tools",
-      icon: Database,
-      skills: [
-        { name: "SQL", level: 75 },
-        { name: "Git/GitHub", level: 85 },
-        { name: "VS Code", level: 90 },
-        { name: "Streamlit", level: 70 },
-      ],
-    },
-  ]
+  const [skillCategories, setSkillCategories] = useState<SkillCategory[]>([])
+  const [loading, setLoading] = useState(true)
+  const [sortBy, setSortBy] = useState<"name" | "level">("name")
+
+  useEffect(() => {
+    const loadSkills = async () => {
+      try {
+        const response = await fetch("/skills.json")
+        const data: SkillsData = await response.json()
+        setSkillCategories(data.skillCategories)
+      } catch (error) {
+        console.error("Failed to load skills:", error)
+        setSkillCategories([])
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    loadSkills()
+  }, [])
+
+  const sortedSkillCategories = skillCategories.map((category) => ({
+    ...category,
+    skills: [...category.skills].sort((a, b) => {
+      if (sortBy === "level") {
+        return b.level - a.level
+      }
+      return a.name.localeCompare(b.name)
+    }),
+  }))
+
+  if (loading) {
+    return (
+      <section id="skills" className="py-20">
+        <div className="container mx-auto px-4">
+          <p className="text-center text-muted-foreground">Loading skills...</p>
+        </div>
+      </section>
+    )
+  }
 
   return (
     <section id="skills" className="py-20">
@@ -57,15 +82,39 @@ export function SkillsSection() {
             A comprehensive overview of my technical expertise and proficiency levels across various technologies and
             tools.
           </p>
+
+          {/* Sort Options */}
+          <div className="flex gap-2 justify-center mt-8">
+            <Button
+              variant={sortBy === "name" ? "default" : "outline"}
+              size="sm"
+              onClick={() => setSortBy("name")}
+              className="transition-all"
+            >
+              Sort by Name
+            </Button>
+            <Button
+              variant={sortBy === "level" ? "default" : "outline"}
+              size="sm"
+              onClick={() => setSortBy("level")}
+              className="transition-all"
+            >
+              Sort by Level
+            </Button>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-          {skillCategories.map((category, index) => (
-            <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
+          {sortedSkillCategories.map((category, index) => (
+            <Card
+              key={index}
+              className="hover:shadow-lg transition-all duration-300 animate-fade-in-up"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
               <CardHeader>
                 <CardTitle className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-                    <category.icon className="h-5 w-5 text-primary" />
+                    {iconMap[category.icon]}
                   </div>
                   {category.title}
                 </CardTitle>
@@ -74,8 +123,13 @@ export function SkillsSection() {
                 {category.skills.map((skill, skillIndex) => (
                   <div key={skillIndex} className="space-y-2">
                     <div className="flex justify-between items-center">
-                      <span className="font-medium">{skill.name}</span>
-                      <span className="text-sm text-muted-foreground">{skill.level}%</span>
+                      <div className="flex-1">
+                        <span className="font-medium">{skill.name}</span>
+                        {skill.description && (
+                          <p className="text-xs text-muted-foreground">{skill.description}</p>
+                        )}
+                      </div>
+                      <span className="text-sm text-muted-foreground ml-2">{skill.level}%</span>
                     </div>
                     <Progress value={skill.level} className="h-2" />
                   </div>

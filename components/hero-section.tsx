@@ -135,22 +135,22 @@ export function HeroSection() {
           </div>
 
           {/* Profile Image */}
-          <div className="flex justify-center lg:justify-end">
+          <div className="flex justify-center lg:justify-end animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
             <div className="relative">
-              <div className="w-80 h-80 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 p-2 animate-float">
-                <div className="w-full h-full rounded-full overflow-hidden bg-card">
+              <div className="w-80 h-80 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 p-2 animate-float shadow-2xl hover:shadow-primary/30 transition-shadow">
+                <div className="w-full h-full rounded-full overflow-hidden bg-card border-2 border-primary/10">
                   <img
                     src="/professional-headshot-of-a-young-developer-with-gl.jpg"
                     alt="Raghav Vian Panthi"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
                   />
                 </div>
               </div>
               {/* Floating elements */}
-              <div className="absolute -top-4 -right-4 w-16 h-16 bg-primary/20 border-2 border-primary/30 rounded-full flex items-center justify-center animate-pulse">
+              <div className="absolute -top-4 -right-4 w-16 h-16 bg-primary/20 border-2 border-primary/30 rounded-full flex items-center justify-center animate-pulse shadow-lg hover:shadow-primary/50 transition-shadow">
                 <Laptop className="h-6 w-6 text-primary" />
               </div>
-              <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-secondary/20 border-2 border-secondary/30 rounded-full flex items-center justify-center animate-pulse delay-1000">
+              <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-secondary/20 border-2 border-secondary/30 rounded-full flex items-center justify-center animate-pulse delay-1000 shadow-lg hover:shadow-secondary/50 transition-shadow">
                 <Rocket className="h-5 w-5 text-secondary" />
               </div>
             </div>
