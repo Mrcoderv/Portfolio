@@ -144,11 +144,11 @@ export function ContactSection() {
     }
   }
 
-  const displayContactInfo =
+  const displayContactInfo: ContactInfo[] =
     contactInfo.length > 0
       ? contactInfo
       : [
-          { id: "1", type: "email", label: "Email", value: "Raghavap.339@gmail.com", icon: "Mail" },
+          { id: "1", type: "email" as const, label: "Email", value: "Raghavap.339@gmail.com", icon: "Mail" },
         ]
 
   return (

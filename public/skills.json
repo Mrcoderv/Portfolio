@@ -109,6 +109,42 @@
       ]
     },
     {
+      "title": "Frameworks & Backend",
+      "icon": "Code",
+      "skills": [
+        {
+          "name": "Spring Boot",
+          "level": 85,
+          "description": "Java backend framework, microservices"
+        },
+        {
+          "name": "Flask",
+          "level": 75,
+          "description": "Python lightweight web framework"
+        },
+        {
+          "name": "FastAPI",
+          "level": 75,
+          "description": "Modern Python API framework, async"
+        },
+        {
+          "name": "Entity Framework",
+          "level": 70,
+          "description": ".NET ORM for database operations"
+        },
+        {
+          "name": "Express.js",
+          "level": 80,
+          "description": "Node.js web framework"
+        },
+        {
+          "name": "Django",
+          "level": 70,
+          "description": "Full-featured Python web framework"
+        }
+      ]
+    },
+    {
       "title": "Database & Tools",
       "icon": "Database",
       "skills": [
