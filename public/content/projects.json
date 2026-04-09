@@ -26,7 +26,7 @@
   "title": "NEPSE Analysis App",
   "description": "A professional AI-powered fintech platform for analyzing the Nepal Stock Exchange (NEPSE), featuring live market data, advanced technical signals, portfolio tracking, and structural trend analysis using Gemini 1.5 Flash.",
   "category": "Fintech / AI",
-  "imageUrl": "/media/nepse-analysis-dashboard.jpg",
+  "imageUrl": "/media/Nepseai.png",
   "technologies": [
     "React",
     "Vite",
