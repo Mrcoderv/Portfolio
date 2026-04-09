@@ -146,9 +146,7 @@ export function AboutSection() {
                 Who am I?
               </h3>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Highly motivated and result-driven Bachelor of Computer Applications (BCA) student with a strong
-                foundation in computer science and programming. Proficient in Python, Java, C, HTML, CSS, JavaScript,
-                and .NET, with a growing focus on Machine Learning, Artificial Intelligence, and Data Analysis.
+                I am a developer passionate about building intelligent machine learning solutions that tackle real world challenges. With a strong background in computer science, I specialize in creating impactful applications leveraging AI and data, and am actively collaborating with international teams on advanced projects.
               </p>
               <p className="text-muted-foreground leading-relaxed">
                 Experienced in both command-line and web-based application development, passionate about using AI and
