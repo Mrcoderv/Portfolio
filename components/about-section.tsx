@@ -148,11 +148,7 @@ export function AboutSection() {
               <p className="text-muted-foreground leading-relaxed mb-4">
                 I am a developer passionate about building intelligent machine learning solutions that tackle real world challenges. With a strong background in computer science, I specialize in creating impactful applications leveraging AI and data, and am actively collaborating with international teams on advanced projects.
               </p>
-              <p className="text-muted-foreground leading-relaxed">
-                Experienced in both command-line and web-based application development, passionate about using AI and
-                data to tackle real-world challenges. Collaborating with international teams on machine learning
-                projects at Omdena, contributing to climate analytics and data normalization solutions.
-              </p>
+              
             </div>
 
             {/* Education Section */}
