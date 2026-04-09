@@ -22,7 +22,33 @@
     ]
   },
   {
-    "id": "project-2",
+  "id": "project-2",
+  "title": "NEPSE Analysis App",
+  "description": "A professional AI-powered fintech platform for analyzing the Nepal Stock Exchange (NEPSE), featuring live market data, advanced technical signals, portfolio tracking, and structural trend analysis using Gemini 1.5 Flash.",
+  "category": "Fintech / AI",
+  "imageUrl": "/media/nepse-analysis-dashboard.jpg",
+  "technologies": [
+    "React",
+    "Vite",
+    "Node.js",
+    "Express",
+    "Gemini 1.5 Flash API",
+    "Tailwind CSS"
+  ],
+  "githubUrl": "https://github.com/Mrcoderv/nepse_analysis_app",
+  "liveUrl": "https://nepse-analysis-app.vercel.app/",
+  "startDate": "2025-03",
+  "endDate": "Present",
+  "highlights": [
+    "Live NEPSE market data integration",
+    "AI-powered technical analysis using Gemini",
+    "Persistent portfolio tracking system",
+    "Advanced trend and signal detection",
+    "Clean and interactive dashboard UI"
+  ]
+},
+  {
+    "id": "project-3",
     "title": "ULOG: Log Normalization Pipeline (Omdena)",
     "description": "Contributing to development of a robust log normalization and classification system with data preprocessing and feature extraction.",
     "category": "ML/AI",
@@ -44,7 +70,7 @@
     ]
   },
   {
-    "id": "project-3",
+    "id": "project-4",
     "title": "JavaFX Ball Shot Game",
     "description": "Designed and developed a 2D Ball Shooting Game using JavaFX with physics-based mechanics and intuitive user interaction.",
     "category": "Game Development",
@@ -65,7 +91,7 @@
     ]
   },
   {
-    "id": "project-4",
+    "id": "project-5",
     "title": "Hamro Yatra - Tourist Management System",
     "description": "Developed a comprehensive tourism and travel management system for Nepal with booking, authentication, and package management features.",
     "category": "Web Development",
@@ -88,7 +114,7 @@
     ]
   },
   {
-    "id": "project-5",
+    "id": "project-6",
     "title": "Portfolio Website",
     "description": "A responsive personal portfolio website showcasing projects, skills, and professional experience with modern design and smooth animations.",
     "category": "Web Development",
@@ -111,7 +137,7 @@
     ]
   },
   {
-    "id": "project-6",
+    "id": "project-7",
     "title": "ClimateSense AI for Climate Change",
     "description": "Collaborated on climate analytics and prediction modeling for Bhutan with data preprocessing, feature engineering, and performance evaluation.",
     "category": "Data Science",
