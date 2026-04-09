@@ -8,6 +8,7 @@ import { CertificatesSection } from "@/components/certificates-section"
 import { ContactSection } from "@/components/contact-section"
 import { Navigation } from "@/components/navigation"
 import StructuredData from "@/components/structured-data"
+import projectsData from "@/public/content/projects.json"
 
 export default function Home() {
   return (
@@ -19,7 +20,7 @@ export default function Home() {
         <AboutSection />
         <SkillsSection />
         <EducationSection />
-        <ProjectsSection />
+        <ProjectsSection initialProjects={projectsData} />
         <BlogSection />
         <CertificatesSection />
         <ContactSection />
