@@ -88,9 +88,6 @@ export function HeroSection() {
               <p className="text-xl md:text-2xl text-muted-foreground">Computer Applications Student & Developer</p>
             </div>
 
-            <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
-              I am a developer passionate about building intelligent machine learning solutions that tackle real world challenges. With a strong background in computer science, I specialize in creating impactful applications leveraging AI and data, and am actively collaborating with international teams on advanced projects.
-            </p>
 
             <div className="flex flex-wrap gap-4">
               <Button onClick={() => scrollToSection("contact")} className="bg-primary hover:bg-primary/90">
