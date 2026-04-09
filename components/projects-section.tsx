@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -20,41 +20,16 @@ interface Project {
   highlights?: string[]
 }
 
-export function ProjectsSection() {
-  const [projects, setProjects] = useState<Project[]>([])
+interface ProjectsSectionProps {
+  initialProjects: Project[]
+}
+
+export function ProjectsSection({ initialProjects }: ProjectsSectionProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>("all")
-  const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    const loadProjects = async () => {
-      try {
-        const response = await fetch("/content/projects.json")
-        const data: Project[] = await response.json()
-        setProjects(data)
-      } catch (error) {
-        console.error("Failed to load projects:", error)
-        setProjects([])
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    loadProjects()
-  }, [])
-
-  if (loading) {
-    return (
-      <section id="projects" className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <p className="text-center text-muted-foreground">Loading projects...</p>
-        </div>
-      </section>
-    )
-  }
-
-  const categories = ["all", ...new Set(projects.map((p) => p.category))]
+  const categories = ["all", ...new Set(initialProjects.map((p) => p.category))]
   const filteredProjects =
-    selectedCategory === "all" ? projects : projects.filter((p) => p.category === selectedCategory)
+    selectedCategory === "all" ? initialProjects : initialProjects.filter((p) => p.category === selectedCategory)
 
   return (
     <section id="projects" className="py-20 bg-muted/30">
