@@ -104,9 +104,9 @@ export const metadata: Metadata = {
     },
   },
 
-  verification: {
-    google: "your-google-verification-code",
-  },
+ verification: {
+  google: "4sBh68lVaOhmJTCFQLV83db-LlGSskjPSRTs62X1sb0",
+},
 
 }
 
