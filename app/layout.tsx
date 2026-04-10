@@ -20,48 +20,59 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: "Raghav Vian Panthi - Full Stack Developer & Computer Science Student",
+  title: "Raghav Vian Panthi | AI & Machine Learning Developer Nepal",
   description:
-    "Raghav Vian Panthi is a passionate Computer Applications student and full-stack developer from Nepal specializing in Java, Python, JavaScript, React, Next.js, and modern web development. Explore my portfolio, projects, and technical blog posts.",
+    "Raghav Vian Panthi is a developer from Nepal working in AI, machine learning, and data-driven applications. Explore projects including fintech, NEPSE analysis, and modern web development.",
+
   generator: "Next.js",
   applicationName: "Raghav Panthi Portfolio",
   referrer: "origin-when-cross-origin",
+
   keywords: [
     "Raghav Panthi",
     "Raghav Vian Panthi",
-    "Full Stack Developer",
-    "Computer Applications Student",
-    "Nepal Developer",
-    "Java Developer",
-    "Python Developer",
-    "JavaScript Developer",
+    "AI Developer Nepal",
+    "Machine Learning Developer",
+    "Data Analytics Developer",
+    "Python Developer Nepal",
+    "Java Developer Nepal",
+    "Backend Developer Nepal",
+    "AI Projects Nepal",
+    "Machine Learning Projects",
+    "Data Science Portfolio",
+    "Fintech Developer",
+    "NEPSE Analysis App",
+    "Stock Market Analysis Nepal",
+    "AI Fintech Platform",
+    "FastAPI Developer",
+    "Flask Developer",
+    "Spring Boot Developer",
     "React Developer",
     "Next.js Developer",
-    "Web Development",
-    "Software Engineer",
-    "Portfolio",
-    "Byte Space Nepal",
-    "Programming",
-    "Technology Blog",
+    "Software Developer Nepal",
+    "Developer Portfolio",
+    "Tech Portfolio Nepal",
+    "Omdena Contributor",
+    "AI Portfolio",
+    "Data Driven Applications",
+    "Modern Web Development",
+    "Tech Blog Nepal"
   ],
+
   authors: [{ name: "Raghav Vian Panthi", url: "https://raghavpanthi.com.np" }],
   creator: "Raghav Vian Panthi",
   publisher: "Raghav Vian Panthi",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
+
   metadataBase: new URL("https://raghavpanthi.com.np"),
   alternates: {
     canonical: "/",
   },
+
   openGraph: {
-    title: "Raghav Vian Panthi - Full Stack Developer & Computer Science Student",
+    title: "Raghav Vian Panthi | AI & Machine Learning Developer",
     description:
-      "Passionate Computer Applications student and full-stack developer from Nepal. Explore my portfolio, projects, and technical expertise in modern web development.",
+      "Explore AI, machine learning, and fintech projects by Raghav Vian Panthi, including NEPSE analysis and data-driven applications.",
     type: "website",
-    locale: "en_US",
     url: "https://raghavpanthi.com.np",
     siteName: "Raghav Panthi Portfolio",
     images: [
@@ -69,33 +80,34 @@ export const metadata: Metadata = {
         url: "/media/professional-headshot-of-a-young-developer-with-gl.jpg",
         width: 1200,
         height: 630,
-        alt: "Raghav Vian Panthi - Full Stack Developer",
+        alt: "Raghav Vian Panthi - AI Developer",
       },
     ],
   },
+
   twitter: {
     card: "summary_large_image",
-    title: "Raghav Vian Panthi - Full Stack Developer",
+    title: "Raghav Vian Panthi | AI Developer",
     description:
-      "Computer Applications student and full-stack developer from Nepal specializing in modern web development.",
+      "AI, machine learning, and fintech projects from Nepal. Explore portfolio and technical work.",
     images: ["/media/professional-headshot-of-a-young-developer-with-gl.jpg"],
   },
+
   robots: {
     index: true,
     follow: true,
-    nocache: true,
     googleBot: {
       index: true,
       follow: true,
-      noimageindex: false,
-      "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
     },
   },
+
   verification: {
     google: "your-google-verification-code",
   },
+
 }
 
 export default function RootLayout({
