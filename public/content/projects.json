@@ -21,6 +21,7 @@
       "Data preprocessing and analysis pipeline"
     ]
   },
+  
   {
   "id": "project-2",
   "title": "NEPSE Analysis App",
@@ -46,9 +47,30 @@
     "Advanced trend and signal detection",
     "Clean and interactive dashboard UI"
   ]
+},{
+  "id": "project-3",
+  "title": "Faah & Jai Hoo — Code Sound Effects (VS Code Extension)",
+  "description": "Developed a VS Code extension that enhances developer experience by adding real-time audio feedback for terminal commands, debug sessions, and task execution, making coding more interactive and engaging.",
+  "category": "Developer Tools",
+  "imageUrl": "/media/vscode-extension-sound-effects.jpg",
+  "technologies": [
+    "TypeScript",
+    "VS Code API",
+    "Node.js",
+    "Audio Integration"
+  ],
+  "liveUrl": "https://marketplace.visualstudio.com/items?itemName=Raghavvian.terminal-jaihoo-and-faah",
+  "startDate": "2026-03",
+  "endDate": "2026-04",
+  "highlights": [
+    "Real-time audio feedback for success and error events (Jai Hoo & Faah sounds)",
+    "Integrated with terminal commands, debug sessions, and task execution",
+    "Custom sound support with volume control and multiple audio formats",
+    "Cross-platform compatibility (Windows, Linux, macOS)"
+  ]
 },
   {
-    "id": "project-3",
+    "id": "project-4",
     "title": "ULOG: Log Normalization Pipeline (Omdena)",
     "description": "Contributing to development of a robust log normalization and classification system with data preprocessing and feature extraction.",
     "category": "ML/AI",
@@ -70,7 +92,7 @@
     ]
   },
   {
-    "id": "project-4",
+    "id": "project-5",
     "title": "JavaFX Ball Shot Game",
     "description": "Designed and developed a 2D Ball Shooting Game using JavaFX with physics-based mechanics and intuitive user interaction.",
     "category": "Game Development",
@@ -91,7 +113,7 @@
     ]
   },
   {
-    "id": "project-5",
+    "id": "project-6",
     "title": "Hamro Yatra - Tourist Management System",
     "description": "Developed a comprehensive tourism and travel management system for Nepal with booking, authentication, and package management features.",
     "category": "Web Development",
@@ -114,7 +136,7 @@
     ]
   },
   {
-    "id": "project-6",
+    "id": "project-7",
     "title": "Portfolio Website",
     "description": "A responsive personal portfolio website showcasing projects, skills, and professional experience with modern design and smooth animations.",
     "category": "Web Development",
