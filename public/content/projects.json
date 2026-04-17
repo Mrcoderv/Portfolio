@@ -52,7 +52,7 @@
   "title": "Faah & Jai Hoo — Code Sound Effects (VS Code Extension)",
   "description": "Developed a VS Code extension that enhances developer experience by adding real-time audio feedback for terminal commands, debug sessions, and task execution, making coding more interactive and engaging.",
   "category": "Developer Tools",
-  "imageUrl": "/media/vscode-extension-sound-effects.jpg",
+  "imageUrl": "/media/vscodesoundeffects.jpg",
   "technologies": [
     "TypeScript",
     "VS Code API",
