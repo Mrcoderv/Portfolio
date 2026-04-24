@@ -130,7 +130,7 @@ export function AboutSection() {
             <div className="relative">
               <div className="w-64 h-64 rounded-full overflow-hidden border-4 border-primary/20 shadow-lg hover:shadow-xl transition-shadow">
                 <img
-                  src="/media/professional-photo-of-raghav-panthi--computer-scie.jpg"
+                  src="/media/background.png"
                   alt="Raghav Vian Panthi"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
