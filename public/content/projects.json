@@ -1,6 +1,32 @@
 [
+  
   {
-    "id": "project-1",
+  "id": "project-1",
+  "title": "Nepali Nibedan Generator",
+  "description": "Developed a web-based Nepali application generator platform where users can select official Nepali nibedan templates, enter required details, and instantly generate professional PDF documents online.",
+  "category": "Web Application",
+  "imageUrl": "/media/nepali-nibedan-generator-dashboard-with-form-and-p.jpg",
+  "technologies": [
+    "Django",
+    "Python",
+    "HTML",
+    "CSS",
+    "Bootstrap",
+    "PDF Generation"
+  ],
+
+  "liveUrl": "https://nepali-nibedan-generator.onrender.com/",
+  "startDate": "2026-05",
+  "endDate": "Present",
+  "highlights": [
+    "Dynamic Nepali nibedan template selection system",
+    "Automatic PDF generation from user input",
+    "Responsive and user-friendly interface",
+    "Supports official Nepali document formatting",
+    "Deployed online with Render for public access"
+  ]
+},{
+    "id": "project-3",
     "title": "Climate Analytics Platform (Omdena)",
     "description": "Built an end-to-end climate analytics platform to predict and visualize climate impacts across Nepal with interactive dashboards and actionable insights.",
     "category": "Data Science",
@@ -48,7 +74,7 @@
     "Clean and interactive dashboard UI"
   ]
 },{
-  "id": "project-3",
+  "id": "project-4",
   "title": "Faah & Jai Hoo — Code Sound Effects (VS Code Extension)",
   "description": "Developed a VS Code extension that enhances developer experience by adding real-time audio feedback for terminal commands, debug sessions, and task execution, making coding more interactive and engaging.",
   "category": "Developer Tools",
@@ -70,7 +96,7 @@
   ]
 },
   {
-    "id": "project-4",
+    "id": "project-5",
     "title": "ULOG: Log Normalization Pipeline (Omdena)",
     "description": "Contributing to development of a robust log normalization and classification system with data preprocessing and feature extraction.",
     "category": "ML/AI",
@@ -92,7 +118,7 @@
     ]
   },
   {
-    "id": "project-5",
+    "id": "project-6",
     "title": "JavaFX Ball Shot Game",
     "description": "Designed and developed a 2D Ball Shooting Game using JavaFX with physics-based mechanics and intuitive user interaction.",
     "category": "Game Development",
@@ -113,7 +139,7 @@
     ]
   },
   {
-    "id": "project-6",
+    "id": "project-7",
     "title": "Hamro Yatra - Tourist Management System",
     "description": "Developed a comprehensive tourism and travel management system for Nepal with booking, authentication, and package management features.",
     "category": "Web Development",
@@ -136,7 +162,7 @@
     ]
   },
   {
-    "id": "project-7",
+    "id": "project-8",
     "title": "Portfolio Website",
     "description": "A responsive personal portfolio website showcasing projects, skills, and professional experience with modern design and smooth animations.",
     "category": "Web Development",
