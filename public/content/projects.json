@@ -5,7 +5,7 @@
   "title": "Nepali Nibedan Generator",
   "description": "Developed a web-based Nepali application generator platform where users can select official Nepali nibedan templates, enter required details, and instantly generate professional PDF documents online.",
   "category": "Web Application",
-  "imageUrl": "/media/nepali-nibedan-generator-dashboard-with-form-and-p.jpg",
+  "imageUrl": "/media/Nepalinibedan.png",
   "technologies": [
     "Django",
     "Python",
