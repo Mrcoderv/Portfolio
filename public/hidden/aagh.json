@@ -4,6 +4,17 @@
     {
       "post_no": 2,
       "post_type": "poem",
+      "title": "Maa ",
+      "author": "Raghav Panthi",
+      "content": "मन नै चोरी लायौ तिमीले चुपचाप,\nसाथीले जिस्कायो तर म थिएँ लाचार।\nन प्रेम, न बन्धनको दाग,\nकेवल आकर्षणले लियो एक दिनको भाग।",
+      "tags": ["poetry", "aashik"],
+      "category": "Poetry",
+      "language": "np",
+      "status": "draft",
+      "created_at": "2026-05-23T10:35:00Z"
+    },,{
+      "post_no": 2,
+      "post_type": "poem",
       "title": "Silent Mood",
       "author": "Raghav Panthi",
       "content": "मन नै चोरी लायौ तिमीले चुपचाप,\nसाथीले जिस्कायो तर म थिएँ लाचार।\nन प्रेम, न बन्धनको दाग,\nकेवल आकर्षणले लियो एक दिनको भाग।",
@@ -13,5 +24,6 @@
       "status": "draft",
       "created_at": "2026-05-23T10:35:00Z"
     }
+    
   ]
 }
