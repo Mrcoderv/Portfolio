@@ -30,9 +30,7 @@ export default function HiddenAaghPage() {
         return res.json()
       })
       .then((data: { posts: Post[] }) => {
-        setPosts(
-          (data.posts || []).filter((post) => post.status === "published")
-        )
+        setPosts(data.posts || [])
       })
       .catch((err) => {
         console.error("Failed to load aagh.json:", err)
@@ -63,7 +61,7 @@ export default function HiddenAaghPage() {
 
         {!loading && posts.length === 0 && (
           <p className="text-center text-muted-foreground py-16">
-            No published posts yet.
+            No posts yet.
           </p>
         )}
 
