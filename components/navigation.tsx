@@ -31,11 +31,10 @@ export function Navigation() {
     const element = document.getElementById(sectionId)
     if (element) {
       element.scrollIntoView({ behavior: "smooth" })
-      setIsMobileMenuOpen(false)
     } else {
       router.push(`/#${sectionId}`)
-      setIsMobileMenuOpen(false)
     }
+    setIsMobileMenuOpen(false)
   }
 
   return (
