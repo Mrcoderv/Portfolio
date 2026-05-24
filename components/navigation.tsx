@@ -32,11 +32,10 @@ export function Navigation() {
     if (element) {
       element.scrollIntoView({ behavior: "smooth" })
       setIsMobileMenuOpen(false)
-      return
+    } else {
+      router.push(`/#${sectionId}`)
+      setIsMobileMenuOpen(false)
     }
-
-    router.push(`/#${sectionId}`)
-    setIsMobileMenuOpen(false)
   }
 
   return (

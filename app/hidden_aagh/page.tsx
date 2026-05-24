@@ -18,11 +18,10 @@ interface Post {
 }
 
 const POEM_POST_TYPE = "poem"
-const POEM_CONTENT_CLASS = `rounded-xl
-bg-gradient-to-r from-rose-100/70 via-orange-100/70 to-violet-100/70
-dark:from-rose-500/10 dark:via-orange-500/10 dark:to-violet-500/10
-text-fuchsia-700 dark:text-fuchsia-300
-font-bold text-base md:text-lg leading-loose p-3`
+const POEM_CONTENT_CLASS =
+  "rounded-xl bg-gradient-to-r from-rose-100/70 via-orange-100/70 to-violet-100/70 " +
+  "dark:from-rose-500/10 dark:via-orange-500/10 dark:to-violet-500/10 " +
+  "text-fuchsia-700 dark:text-fuchsia-300 font-bold text-base md:text-lg leading-loose p-3"
 
 export default function HiddenAaghPage() {
   const [posts, setPosts] = useState<Post[]>([])
