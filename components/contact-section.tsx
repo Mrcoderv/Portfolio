@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState, useEffect } from "react"
+import Link from "next/link"
 import {
   Mail,
   Phone,
@@ -283,6 +284,16 @@ export function ContactSection() {
               </div>
             </form>
           </div>
+        </div>
+
+        <div className="mt-12 pt-6 border-t border-border text-center">
+          <Link
+            href="/hidden_aagh"
+            className="text-xs px-3 py-1 rounded-md border border-border bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors inline-block"
+            aria-label="See Aagh — articles and poems"
+          >
+            See Aagh
+          </Link>
         </div>
       </div>
     </section>
