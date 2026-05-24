@@ -104,7 +104,7 @@ export default function HiddenAaghPage() {
                 <pre
                   className={`whitespace-pre-wrap font-sans mb-4 ${
                     isPoem
-                      ? "rounded-xl border border-primary/20 bg-gradient-to-r from-rose-500 via-orange-400 to-violet-500 bg-clip-text text-transparent font-bold text-base md:text-lg leading-loose p-3"
+                      ? "rounded-xl border border-primary/30 bg-gradient-to-r from-rose-100/70 via-orange-100/70 to-violet-100/70 dark:from-rose-500/10 dark:via-orange-500/10 dark:to-violet-500/10 text-fuchsia-700 dark:text-fuchsia-300 font-bold text-base md:text-lg leading-loose p-3"
                       : "text-sm leading-relaxed text-foreground"
                   }`}
                 >
