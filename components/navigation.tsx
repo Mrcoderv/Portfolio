@@ -22,13 +22,7 @@ export function Navigation() {
   }, [])
 
   const scrollToSection = (sectionId: string) => {
-    if (pathname !== "/") {
-      router.push(`/#${sectionId}`)
-      setIsMobileMenuOpen(false)
-      return
-    }
-
-    const element = document.getElementById(sectionId)
+    const element = pathname === "/" ? document.getElementById(sectionId) : null
     if (element) {
       element.scrollIntoView({ behavior: "smooth" })
     } else {
