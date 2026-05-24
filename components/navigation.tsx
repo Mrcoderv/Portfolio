@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import { usePathname, useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Menu, X, Settings } from "lucide-react"
 import { ThemeToggle } from "./theme-toggle"
@@ -9,6 +10,8 @@ import { ThemeToggle } from "./theme-toggle"
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const pathname = usePathname()
+  const router = useRouter()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,11 +22,21 @@ export function Navigation() {
   }, [])
 
   const scrollToSection = (sectionId: string) => {
+    if (pathname !== "/") {
+      router.push(`/#${sectionId}`)
+      setIsMobileMenuOpen(false)
+      return
+    }
+
     const element = document.getElementById(sectionId)
     if (element) {
       element.scrollIntoView({ behavior: "smooth" })
       setIsMobileMenuOpen(false)
+      return
     }
+
+    router.push(`/#${sectionId}`)
+    setIsMobileMenuOpen(false)
   }
 
   return (

@@ -289,10 +289,10 @@ export function ContactSection() {
         <div className="mt-12 pt-6 border-t border-border text-center">
           <Link
             href="/hidden_aagh"
-            className="text-xs px-3 py-1 rounded-md border border-border bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors inline-block"
-            aria-label="See Aagh — articles and poems"
+            className="text-sm px-5 py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors inline-block"
+            aria-label="Hidden Raghav — articles and poems"
           >
-            See Aagh
+            Hidden Raghav
           </Link>
         </div>
       </div>
