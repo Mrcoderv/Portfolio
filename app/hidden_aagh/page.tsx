@@ -17,6 +17,12 @@ interface Post {
   created_at: string
 }
 
+const POEM_POST_TYPE = "poem"
+const POEM_CONTENT_CLASS =
+  "rounded-xl bg-gradient-to-r from-rose-100/70 via-orange-100/70 to-violet-100/70 " +
+  "dark:from-rose-500/10 dark:via-orange-500/10 dark:to-violet-500/10 " +
+  "text-fuchsia-700 dark:text-fuchsia-300 font-bold text-base md:text-lg leading-loose p-3"
+
 export default function HiddenAaghPage() {
   const [posts, setPosts] = useState<Post[]>([])
   const [loading, setLoading] = useState(true)
@@ -66,52 +72,64 @@ export default function HiddenAaghPage() {
         )}
 
         <div className="space-y-8">
-          {posts.map((post) => (
-            <article
-              key={post.post_no}
-              className="bg-card border border-border rounded-2xl p-6 shadow-sm"
-            >
-              <header className="mb-4">
-                <div className="flex flex-wrap items-baseline gap-3 mb-1">
-                  <h2 className="text-xl font-bold">{post.title}</h2>
-                  <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-primary/10 text-primary">
-                    {post.post_type}
-                  </span>
-                </div>
-                <p className="text-sm text-muted-foreground">
-                  By {post.author} &bull;{" "}
-                  {new Date(post.created_at).toLocaleDateString(undefined, {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </p>
-              </header>
+          {posts.map((post) => {
+            const isPoem = post.post_type.toLowerCase() === POEM_POST_TYPE
 
-              {post.summary && (
-                <p className="text-sm text-muted-foreground italic mb-4 border-l-2 border-border pl-3">
-                  {post.summary}
-                </p>
-              )}
-
-              <pre className="whitespace-pre-wrap font-sans text-sm leading-relaxed text-foreground mb-4">
-                {post.content}
-              </pre>
-
-              {post.tags && post.tags.length > 0 && (
-                <div className="flex flex-wrap gap-2">
-                  {post.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs px-2 py-0.5 rounded-full bg-muted text-muted-foreground"
-                    >
-                      #{tag}
+            return (
+              <article
+                key={post.post_no}
+                className={`rounded-2xl p-6 shadow-sm border ${
+                  isPoem
+                    ? "bg-gradient-to-br from-primary/10 via-card to-pink-500/10 border-primary/30"
+                    : "bg-card border-border"
+                }`}
+              >
+                <header className="mb-4">
+                  <div className="flex flex-wrap items-baseline gap-3 mb-1">
+                    <h2 className="text-xl font-bold">{post.title}</h2>
+                    <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-primary/10 text-primary">
+                      {post.post_type}
                     </span>
-                  ))}
-                </div>
-              )}
-            </article>
-          ))}
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    By {post.author} &bull;{" "}
+                    {new Date(post.created_at).toLocaleDateString(undefined, {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </p>
+                </header>
+
+                {post.summary && (
+                  <p className="text-sm text-muted-foreground italic mb-4 border-l-2 border-border pl-3">
+                    {post.summary}
+                  </p>
+                )}
+
+                <pre
+                  className={`whitespace-pre-wrap font-sans mb-4 ${
+                    isPoem ? POEM_CONTENT_CLASS : "text-sm leading-relaxed text-foreground"
+                  }`}
+                >
+                  {post.content}
+                </pre>
+
+                {post.tags && post.tags.length > 0 && (
+                  <div className="flex flex-wrap gap-2">
+                    {post.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-xs px-2 py-0.5 rounded-full bg-muted text-muted-foreground"
+                      >
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </article>
+            )
+          })}
         </div>
       </main>
     </div>
