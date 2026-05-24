@@ -1,0 +1,29 @@
+{
+  "posts": [
+    {
+      "post_no": 1,
+      "post_type": "article",
+      "title": "My Experience",
+      "author": "Raghav Panthi",
+      "content": "This is my experience article content.\nI learned many things during my journey.\nIt helped me grow personally and professionally.",
+      "summary": "A short summary of my experience.",
+      "tags": ["experience", "life"],
+      "category": "Personal",
+      "language": "en",
+      "status": "published",
+      "created_at": "2026-05-24T10:30:00Z"
+    },
+    {
+      "post_no": 2,
+      "post_type": "poem",
+      "title": "Silent Moon",
+      "author": "Raghav Panthi",
+      "content": "The moon shines bright in silent skies,\nWhispering dreams as night flies by.\nStars awaken with gentle light,\nPainting hope across the night.",
+      "tags": ["poetry", "nature"],
+      "category": "Poetry",
+      "language": "en",
+      "status": "draft",
+      "created_at": "2026-05-24T10:35:00Z"
+    }
+  ]
+}
