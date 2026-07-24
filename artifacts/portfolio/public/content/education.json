@@ -6,6 +6,7 @@
     "field": "Computer Science",
     "startYear": 2023,
     "endYear": 2027,
+    "currentSemester": "7th Semester",
     "status": "pursuing",
     "description": "Pursuing a comprehensive degree in Computer Applications with strong focus on programming, algorithms, and software development. Active in college projects and technical competitions."
   },
@@ -23,10 +24,10 @@
     "id": "edu-3",
     "school": "Shree Mahendra Secondary School",
     "degree": "SEE",
-    "field": "General {optmath and computer}",
+    "field": "General (Optional Math & Computer)",
     "startYear": 2015,
     "endYear": 2020,
     "status": "completed",
-    "description": "Completed school level education"
+    "description": "Completed school level education."
   }
 ]

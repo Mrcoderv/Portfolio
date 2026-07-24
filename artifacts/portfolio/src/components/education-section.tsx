@@ -10,6 +10,7 @@ interface Education {
   field: string
   startYear: number
   endYear: number
+  currentSemester?: string
   status: "pursuing" | "completed"
   gpa?: string
   description: string
@@ -73,9 +74,16 @@ export function EducationSection() {
                         </div>
                       </div>
                     </div>
-                    <Badge variant={edu.status === "pursuing" ? "default" : "secondary"} className="whitespace-nowrap">
-                      {edu.status === "pursuing" ? "Currently Pursuing" : "Completed"}
-                    </Badge>
+                    <div className="flex flex-col items-end gap-1">
+                      <Badge variant={edu.status === "pursuing" ? "default" : "secondary"} className="whitespace-nowrap">
+                        {edu.status === "pursuing" ? "Currently Pursuing" : "Completed"}
+                      </Badge>
+                      {edu.currentSemester && (
+                        <Badge variant="outline" className="whitespace-nowrap text-xs border-primary/40 text-primary">
+                          {edu.currentSemester}
+                        </Badge>
+                      )}
+                    </div>
                   </div>
                 </CardHeader>
 
