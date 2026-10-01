@@ -29,7 +29,7 @@ export function BlogSection() {
 
         <div className="w-full rounded-lg border border-border overflow-hidden shadow-lg animate-fade-in-up">
           <iframe
-            src="https://bytespacenepal.com/author/raghavapanthi/"
+            src="https://medium.com/@raghavp791"
             title="Blog Posts by Raghav Panthi"
             className="w-full border-0"
             style={{ height: isMobile ? "400px" : "600px" }}
@@ -40,12 +40,12 @@ export function BlogSection() {
 
         <p className="text-center text-muted-foreground mt-8 text-sm">
           <a
-            href="https://bytespacenepal.com/author/raghavapanthi/"
+            href="https://medium.com/@raghavp791"
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary hover:underline"
           >
-            View all articles on Byte Space Nepal →
+            View all articles on medium →
           </a>
         </p>
       </div>
