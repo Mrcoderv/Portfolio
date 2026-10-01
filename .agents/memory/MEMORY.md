@@ -1,0 +1,1 @@
+- [Vercel portfolio migration](vercel-to-replit-portfolio.md) — patterns for porting Next.js+Vercel Blob portfolios: OKLCH theme, geist→Inter, blob→local Express, projects JSON in src/data/.

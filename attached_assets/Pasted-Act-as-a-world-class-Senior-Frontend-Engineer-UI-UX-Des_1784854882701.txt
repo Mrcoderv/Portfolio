@@ -1,0 +1,150 @@
+Act as a world-class Senior Frontend Engineer, UI/UX Designer, and Creative Director.
+
+Redesign my developer portfolio into a premium, futuristic, award-worthy website similar to Awwwards-winning portfolios.
+
+The portfolio should feel modern, cinematic, interactive, and highly animated while maintaining excellent performance and accessibility.
+
+Design Style:
+- Dark theme with glassmorphism.
+- Neon blue, cyan, purple, and subtle green accents.
+- Soft glowing effects.
+- Floating particles in the background.
+- Premium gradients.
+- Smooth blurred backgrounds.
+- Modern typography using Geist, Inter, or Satoshi.
+- Minimal but luxurious.
+
+Animation Requirements:
+- Smooth page transitions.
+- Framer Motion animations throughout.
+- Scroll-triggered animations.
+- Staggered reveal animations.
+- Magnetic buttons.
+- Hover lift effects.
+- Glow animations.
+- Animated gradient borders.
+- Cursor follower with smooth interpolation.
+- Mouse parallax.
+- 3D tilt cards.
+- Smooth section transitions.
+- Text reveal animations.
+- Animated counters.
+- Infinite marquee for skills.
+- Floating background shapes.
+- Spotlight effect following cursor.
+- Hero background with animated grid.
+
+Hero Section:
+Create an unforgettable landing experience.
+
+Include:
+- Large animated name.
+- Typing animation.
+- Rotating professional titles.
+- Floating profile image with glowing ring.
+- Animated background.
+- CTA buttons with premium hover effects.
+- Social icons with micro interactions.
+- Scroll indicator.
+
+About Section:
+- Interactive timeline.
+- Animated cards.
+- Personal statistics.
+- Experience highlights.
+- Glassmorphism layout.
+
+Skills Section:
+Instead of progress bars, create:
+- Interactive skill bubbles.
+- Animated tech icons.
+- Orbiting technologies.
+- Infinite marquee.
+- Hover expansion.
+- Glow effects.
+
+Projects Section:
+This should be the highlight.
+
+Create premium project cards featuring:
+- Large preview image.
+- Live demo button.
+- GitHub button.
+- Tech stack badges.
+- Animated overlays.
+- Image zoom.
+- Mouse tilt.
+- Spotlight hover.
+- Smooth transitions.
+- Featured project layout.
+- Category filters.
+- Search functionality.
+- Project modal with detailed information.
+
+Experience Section:
+Build a beautiful animated vertical timeline.
+
+Certificates:
+Use animated glass cards.
+Hover glow.
+3D movement.
+Expandable details.
+
+GitHub Section:
+Display:
+- GitHub contribution graph.
+- Statistics.
+- Languages.
+- Repository cards.
+- Animated counters.
+
+Contact Section:
+Design a premium contact experience:
+- Glass contact form.
+- Animated input borders.
+- Floating labels.
+- Interactive map.
+- Social cards.
+- Success animation.
+
+Micro-interactions:
+Every clickable element should have:
+- Hover animation.
+- Active animation.
+- Focus animation.
+- Loading animation.
+- Smooth transitions.
+
+Scrolling:
+Implement Lenis smooth scrolling.
+
+Performance:
+- Lazy load images.
+- Optimize animations.
+- 60 FPS.
+- Mobile-first.
+- Fully responsive.
+- Accessibility compliant.
+- SEO optimized.
+
+Tech Stack:
+- Next.js 15
+- React 19
+- TypeScript
+- Tailwind CSS v4
+- Framer Motion
+- GSAP (only where beneficial)
+- Three.js or React Three Fiber for subtle 3D effects
+- Lucide React Icons
+- shadcn/ui components
+
+Do NOT overuse animations.
+Animations should feel premium and intentional rather than distracting.
+
+Overall feeling:
+Apple × Vercel × Linear × Stripe × Raycast × Awwwards.
+
+The visitor should immediately think:
+"This developer builds world-class software."
+
+Generate production-ready code with reusable components, clean architecture, and best practices.
